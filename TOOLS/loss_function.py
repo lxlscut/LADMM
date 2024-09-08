@@ -263,16 +263,15 @@ def contrastive(label_predict, C, sim, label_true):
 
     if label_predict is None:
         return loss_info
+
+
     label_predict_norm = F.normalize(label_predict, p=2, dim=1)
     similarity_predict = torch.matmul(label_predict_norm, label_predict_norm.T)
-
-    similarity_predict = torch.exp(similarity_predict/0.1)
 
     positive_sum = torch.sum(similarity_predict * Cp, dim=0)
     negative_sum = torch.sum(similarity_predict * Cn, dim=0)
 
     temp = (positive_sum + 1e-6) / (positive_sum + negative_sum)
-
     loss_ = -torch.log(temp)
     loss = torch.mean(loss_)
 
@@ -522,12 +521,10 @@ def empty_cluster_penalty_loss(assignment_matrix, lambda_penalty=1.0, epsilon=1e
     :return: 最终损失 (tensor)
     """
     # 计算每个簇的分配总和
-    # assignment_matrix = F.softmax(assignment_matrix, dim=1)
-
     cluster_sums = assignment_matrix.sum(dim=0)
 
     # 计算空簇惩罚项
-    penalty_term = 10*torch.sum(1.0 / (cluster_sums + epsilon))
+    penalty_term = torch.sum(1.0 / (cluster_sums + epsilon))
 
     # 最终损失仅由空簇惩罚项组成
     total_loss = lambda_penalty * penalty_term

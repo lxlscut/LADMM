@@ -38,7 +38,7 @@ def train_clustering(args,device):
 
     # # Train student
     student = Student(args=args).to(device=device)
-    student.train_stage_2(train_loader=train_loader, teacher=teacher, dataset=dataset, epochs=400)
+    student.train_stage_2(train_loader=train_loader, teacher=teacher, dataset=dataset, epochs=500)
 
     end = time.time()
     print("Elapsed time: {}".format(end - start))

@@ -5,7 +5,6 @@ from TOOLS.get_data import Load_my_Dataset
 import argparse
 import torch
 import random
-from datetime import datetime
 
 from TOOLS.train import train_clustering
 
@@ -28,7 +27,7 @@ def setup_seed(seed):
     torch.backends.cudnn.deterministic = True
 
 
-setup_seed(8322)
+setup_seed(10000)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -42,17 +41,15 @@ if __name__ == '__main__':
     parser.add_argument("--rho", type=float, default=3.0, help="convergence part")
     parser.add_argument("--num_layer", type=int, default=5)
     parser.add_argument("--alpha", type=float, default=10)
-    parser.add_argument("--eta", type=float, default=0.0002)
-    parser.add_argument("--beta", type=float, default=1.0)
+    parser.add_argument("--eta", type=float, default=0.1)
+    parser.add_argument("--beta", type=float, default=0.5)
     parser.add_argument("--gamma", type=float, default=1.0)
-    parser.add_argument("--lamda", type=float, default=0.10)
+    parser.add_argument("--lamda", type=float, default=0.15)
     parser.add_argument("--n_cluster", type=int, default=10)
     parser.add_argument("--dataset", type=str, default="Trento")
 
 
     args = parser.parse_args()
-    
-    print(datetime.now())
 
     train_clustering(args,device)
 

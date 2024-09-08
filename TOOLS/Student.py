@@ -20,26 +20,22 @@ class classifier(nn.Module):
         super(classifier, self).__init__()
         # 分类分支
         self.encoder = nn.Sequential()
-        self.encoder.add_module("cov01", nn.Conv2d(in_channels=in_dim, out_channels=128, kernel_size=[3, 3], stride=1,
+        self.encoder.add_module("cov01", nn.Conv2d(in_channels=in_dim, out_channels=128, kernel_size=[1, 1], stride=1,
                                                    padding='same'))
         self.encoder.add_module("bn01", nn.BatchNorm2d(128))
-        self.encoder.add_module("relu01", nn.LeakyReLU(negative_slope=0.01))
-
-        # self.encoder.add_module("cov02", nn.Conv2d(in_channels=128, out_channels=64, kernel_size=[3, 3], stride=1,
-        #                                            padding='same'))
-        # self.encoder.add_module("bn02", nn.BatchNorm2d(64))
-        # self.encoder.add_module("relu02", nn.LeakyReLU(negative_slope=0.01))
+        self.encoder.add_module("relu01", nn.ReLU(True))
 
 
-        self.encoder.add_module("cov03", nn.Conv2d(in_channels=128, out_channels=32, kernel_size=[3, 3], stride=1,
+        self.encoder.add_module("cov02", nn.Conv2d(in_channels=128, out_channels=64, kernel_size=[3, 3], stride=1,
+                                                   padding='same'))
+        self.encoder.add_module("bn02", nn.BatchNorm2d(64))
+        self.encoder.add_module("relu02", nn.ReLU(True))
+
+
+        self.encoder.add_module("cov03", nn.Conv2d(in_channels=64, out_channels=32, kernel_size=[3, 3], stride=1,
                                                    padding='same'))
         self.encoder.add_module("bn03", nn.BatchNorm2d(32))
-        self.encoder.add_module("relu03", nn.LeakyReLU(negative_slope=0.01))
-
-        # self.encoder.add_module("cov04", nn.Conv2d(in_channels=32, out_channels=16, kernel_size=[3, 3], stride=1,
-        #                                            padding='same'))
-        # self.encoder.add_module("bn04", nn.BatchNorm2d(16))
-        # self.encoder.add_module("relu04", nn.ReLU(True))
+        self.encoder.add_module("relu03", nn.ReLU(True))
 
         self.classifier = nn.Sequential(
             nn.Linear(in_features=32*patch_size*patch_size, out_features=1024),
@@ -50,13 +46,12 @@ class classifier(nn.Module):
             nn.ReLU(True),
             nn.Linear(in_features=512, out_features=out_dim),
             nn.ReLU(True),
-            # nn.Softmax()
         )
 
     def _initialize_weights(self):
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='leaky_relu')
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
                 if m.bias is not None:
                     nn.init.constant_(m.bias, 0)
             elif isinstance(m, nn.BatchNorm2d):
@@ -73,7 +68,6 @@ class classifier(nn.Module):
         h = h.view(h.size(0), -1)
         label_predict = self.classifier(h)
         # soft_assignments = F.softmax(label_predict, dim=1)
-
         label_predict = label_predict + 1e-6
         label_predict = F.normalize(input=label_predict, p=1, dim=1)
 
@@ -103,43 +97,35 @@ class Student(nn.Module):
         # s_refine = self.refined_subspace_affinity(label_predict)
         # loss_class = F.kl_div(label_predict.log(), s_refine.data, reduction='batchmean')
 
-        # make sure final converge to one-hot
-        label_predict_norm = F.normalize(label_predict, p=2, dim=0)
-        pui = torch.matmul(label_predict_norm.T,label_predict_norm)
-        pui.fill_diagonal_(0)
-        loss_pui = torch.sum(pui)
-
         loss_class = compute_negative_entropy_loss(label_predict)
         # distill from C to classfication
         loss_c, loss_info = contrastive(label_predict, c, sim, label_true)
 
         loss_cluster = empty_cluster_penalty_loss(assignment_matrix = label_predict)
 
+
         loss_info.add("loss_class", loss_class)
         loss_info.add("loss_c", loss_c)
-        loss_info.add("loss_pui", loss_pui)
 
-        # loss = loss_c + self.eta*(loss_class + loss_cluster) + 0.001*loss_pui
-        loss = loss_c + self.eta*(loss_class + loss_cluster)
+        loss = loss_c + self.eta*(loss_class + 10*loss_cluster)
 
         return loss, loss_info
 
     def train_stage_2(self, train_loader, teacher, dataset, epochs):
         optimizer = torch.optim.Adam(self.classifier.parameters(), lr=2e-6)
-        # optimizer = torch.optim.AdamW(self.classifier.parameters(), lr=2e-6)
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=5, threshold=0.01,
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=5, threshold=0.0001,
                                                          min_lr=1e-10, eps=1e-10, verbose=True)
         # Load the state dictionary from the file
         state_dict = torch.load("checkpoint/teacher_checkpoint.pt")
         teacher.load_state_dict(state_dict)
         teacher.eval()
+        # self.ae.initialize_weights()
         self.classifier._initialize_weights()
 
         for epoch in range(epochs):
             total_loss = 0
             total_loss_class = 0
             total_loss_c = 0
-            total_loss_pui = 0
             wrong_positive_rate = 0
             wrong_negative_rate = 0
             positive_sample_number = 0
@@ -162,7 +148,6 @@ class Student(nn.Module):
                 total_loss += loss
                 total_loss_class += loss_info.loss_class
                 total_loss_c += loss_info.loss_c
-                total_loss_pui += loss_info.loss_pui
 
             if self.stopping_2.early_stop == False:
                 self.stopping_2(total_loss / (batch_idx + 1))
@@ -178,12 +163,10 @@ class Student(nn.Module):
                                      "loss_class", total_loss_class / (batch_idx + 1),
                                      "sloss", total_loss / (batch_idx + 1),
                                      "loss_c", total_loss_c / (batch_idx + 1),
-                                     "loss_c", total_loss_c / (batch_idx + 1),
                                      "swrong_positive_rate", wrong_positive_rate / (batch_idx + 1),
                                      "swrong_negative_rate", wrong_negative_rate / (batch_idx + 1),
                                      "spositive_sample_number", positive_sample_number / (batch_idx + 1),
                                      "snegative_sample_number", negative_sample_number / (batch_idx + 1),
-                                     "loss_pui", total_loss_pui / (batch_idx + 1),
                                  ],
                                  epoch, same_window=True)
 

@@ -6,7 +6,7 @@ class Ae(nn.Module):
         super(Ae, self).__init__()
         # 编码器
         self.encoder = nn.Sequential()
-        self.encoder.add_module("cov01", nn.Conv2d(in_channels=n_input, out_channels=64, kernel_size=[3, 3], stride=1,
+        self.encoder.add_module("cov01", nn.Conv2d(in_channels=n_input, out_channels=64, kernel_size=[1, 1], stride=1,
                                                    padding='same'))
         self.encoder.add_module("bn01", nn.BatchNorm2d(64))
         self.encoder.add_module("relu01", nn.LeakyReLU(negative_slope=0.01))
@@ -69,16 +69,17 @@ class Ae(nn.Module):
         self.decoder.add_module('rbn5', nn.BatchNorm2d(64))
         self.decoder.add_module("rre05", nn.LeakyReLU(negative_slope=0.01))
 
+
         self.decoder.add_module("tr06",
-                                nn.ConvTranspose2d(in_channels=64, out_channels=n_input, kernel_size=[3, 3], stride=1,
-                                                   padding=1))
+                                nn.ConvTranspose2d(in_channels=64, out_channels=n_input, kernel_size=[1, 1], stride=1,
+                                                   padding=0))
 
 
 
     def initialize_weights(self):
         for m in self.modules():
             if isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d):
-                init.kaiming_normal_(m.weight, a=0.01, mode='fan_out', nonlinearity='leaky_relu')
+                init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
                 if m.bias is not None:
                     init.constant_(m.bias, 0)
             elif isinstance(m, nn.BatchNorm2d):

@@ -1,8 +1,10 @@
+from datetime import datetime
+
 import numpy as np
 import argparse
 import torch
 import random
-from datetime import datetime
+
 from TOOLS.train import train_clustering
 
 torch.backends.cudnn.benchmark = False
@@ -48,10 +50,9 @@ if __name__ == '__main__':
     parser.add_argument("--dataset", type=str, default="Pavia")
 
     args = parser.parse_args()
-
     print(datetime.now())
 
-    train_clustering(args, device)
+    train_clustering(args,device)
 
 
 
