@@ -29,7 +29,7 @@ def setup_seed(seed):
 
 # 设置随机数种子
 # [7270  860 5390 5191 5734 6265  466 4426 5578 8322]
-setup_seed(7270)
+setup_seed(8322)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(

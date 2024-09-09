@@ -79,7 +79,7 @@ class Ae(nn.Module):
     def initialize_weights(self):
         for m in self.modules():
             if isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d):
-                init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+                init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='leaky_relu')
                 if m.bias is not None:
                     init.constant_(m.bias, 0)
             elif isinstance(m, nn.BatchNorm2d):
