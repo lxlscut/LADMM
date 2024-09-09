@@ -22,55 +22,22 @@ class Ae(nn.Module):
         self.encoder.add_module("bn03", nn.BatchNorm2d(n_z))
         self.encoder.add_module("relu03", nn.LeakyReLU(negative_slope=0.01))
 
-        # self.encoder.add_module("cov04", nn.Conv2d(in_channels=128, out_channels=128, kernel_size=[3, 3], stride=1,
-        #                                            padding='same'))
-        # self.encoder.add_module("bn04", nn.BatchNorm2d(128))
-        # self.encoder.add_module("relu04", nn.LeakyReLU(negative_slope=0.01))
-        #
-        # self.encoder.add_module("cov05", nn.Conv2d(in_channels=128, out_channels=64, kernel_size=[3, 3], stride=1,
-        #                                            padding='same'))
-        # self.encoder.add_module("bn05", nn.BatchNorm2d(64))
-        # self.encoder.add_module("relu05", nn.LeakyReLU(negative_slope=0.01))
-        #
-        # self.encoder.add_module("cov06", nn.Conv2d(in_channels=64, out_channels=n_z, kernel_size=[3, 3], stride=1,
-        #                                            padding='same'))
-        # self.encoder.add_module("bn06", nn.BatchNorm2d(n_z))
-        # self.encoder.add_module("relu06", nn.LeakyReLU(negative_slope=0.01))
-
         # 解码器
         self.decoder = nn.Sequential()
-        # self.decoder.add_module("tr01",
-        #                         nn.ConvTranspose2d(in_channels=n_z, out_channels=64, kernel_size=[3, 3], stride=1,
-        #                                            padding=1))
-        # self.decoder.add_module('rbn1', nn.BatchNorm2d(64))
-        # self.decoder.add_module("rre01", nn.LeakyReLU(negative_slope=0.01))
-        #
-        # self.decoder.add_module("tr02",
-        #                         nn.ConvTranspose2d(in_channels=64, out_channels=128, kernel_size=[3, 3], stride=1,
-        #                                            padding=1))
-        # self.decoder.add_module('rbn2', nn.BatchNorm2d(128))
-        # self.decoder.add_module("rre02", nn.LeakyReLU(negative_slope=0.01))
-        #
-        # self.decoder.add_module("tr03",
-        #                         nn.ConvTranspose2d(in_channels=128, out_channels=128, kernel_size=[3, 3], stride=1,
-        #                                            padding=1))
-        # self.decoder.add_module('rbn3', nn.BatchNorm2d(128))
-        # self.decoder.add_module("rre03", nn.LeakyReLU(negative_slope=0.01))
 
-        self.decoder.add_module("tr04",
+        self.decoder.add_module("tr01",
                                 nn.ConvTranspose2d(in_channels=n_z, out_channels=64, kernel_size=[3, 3], stride=1,
                                                    padding=1))
-        self.decoder.add_module('rbn4', nn.BatchNorm2d(64))
-        self.decoder.add_module("rre04", nn.LeakyReLU(negative_slope=0.01))
+        self.decoder.add_module('rbn1', nn.BatchNorm2d(64))
+        self.decoder.add_module("rre01", nn.LeakyReLU(negative_slope=0.01))
 
-        self.decoder.add_module("tr05",
+        self.decoder.add_module("tr02",
                                 nn.ConvTranspose2d(in_channels=64, out_channels=64, kernel_size=[3, 3], stride=1,
                                                    padding=1))
-        self.decoder.add_module('rbn5', nn.BatchNorm2d(64))
-        self.decoder.add_module("rre05", nn.LeakyReLU(negative_slope=0.01))
+        self.decoder.add_module('rbn2', nn.BatchNorm2d(64))
+        self.decoder.add_module("rre02", nn.LeakyReLU(negative_slope=0.01))
 
-
-        self.decoder.add_module("tr06",
+        self.decoder.add_module("tr03",
                                 nn.ConvTranspose2d(in_channels=64, out_channels=n_input, kernel_size=[1, 1], stride=1,
                                                    padding=0))
 
