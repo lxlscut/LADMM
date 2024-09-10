@@ -29,7 +29,7 @@ def setup_seed(seed):
 
 # 设置随机数种子
 # [7270  860 5390 5191 5734 6265  466 4426 5578 8322]
-setup_seed(8322)
+setup_seed(466)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     parser.add_argument("--rho", type=float, default=3.0, help="Convergence part")
     parser.add_argument("--num_layer", type=int, default=5)
     parser.add_argument("--alpha", type=float, default=10)
-    parser.add_argument("--beta", type=float, default=0.1)
+    parser.add_argument("--beta", type=float, default=1.0)
     parser.add_argument("--gamma", type=float, default=1.0)
     parser.add_argument("--eta", type=float, default=0.0002)
     parser.add_argument("--n_cluster", type=int, default=10)
