@@ -300,9 +300,35 @@ def thrC(C, ro_p, ro_n):
     Cp[Ind[pos_indices[0], pos_indices[1]], pos_indices[1]] = 1
     Cn[Ind[neg_indices[0], neg_indices[1]], neg_indices[1]] = 1
     # end = time.time()
+    Cn_s = get_negative_sample(C, Cp)
+    Cp_sum = torch.sum(Cp, dim=0)
+    Cn_sum = torch.sum(Cn_s, dim=0)
+    times = Cn_sum / Cp_sum
+    Cn = torch.logical_and(Cn, Cn_s)
     # print("where:", end-start, "is_contiguous:", S_po.is_contiguous())
 
     return Cp, Cn
+
+
+# Already have Cp, now calculate Cn
+def get_negative_sample(C, Cp, times=3):
+    """
+    :param C: similarity matrix
+    :param Cp: positive samples mask
+    :param times: how many times negative samples should be extracted
+    :return:
+    """
+    #  get the negative sample number of every data point
+    number_postive = torch.sum(Cp, dim=0) * times
+    num_points = len(number_postive)
+    S, Ind = torch.sort(C, dim=0, descending=False)
+    matrix = torch.arange(1, num_points + 1).unsqueeze(1).repeat(1, num_points).to(C.device)
+    S_ne = (matrix <= number_postive.unsqueeze(0)).to(dtype=torch.int8)
+    neg_indices = torch.nonzero(S_ne, as_tuple=True)
+    Cn = torch.zeros((num_points, num_points), device=C.device)
+    Cn[Ind[neg_indices[0], neg_indices[1]], neg_indices[1]] = 1
+    return Cn
+
 
 
 def uniform_loss(x, lambda_=10, epsilon=1e-6):
