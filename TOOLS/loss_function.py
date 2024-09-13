@@ -327,6 +327,7 @@ def get_negative_sample(C, Cp, times=3):
     neg_indices = torch.nonzero(S_ne, as_tuple=True)
     Cn = torch.zeros((num_points, num_points), device=C.device)
     Cn[Ind[neg_indices[0], neg_indices[1]], neg_indices[1]] = 1
+
     return Cn
 
 
