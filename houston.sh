@@ -7,7 +7,7 @@ FILE_PATH="Houston.py"
 SEEDS=(7270 860 5390 5191 5734 6265 466 4426 5578 8322)
 
 # 设置输出结果的目录
-OUTPUT_DIR="result/houston0001"
+OUTPUT_DIR="result/houston0002"
 
 # 创建输出目录（如果不存在的话）
 mkdir -p $OUTPUT_DIR

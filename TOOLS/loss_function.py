@@ -269,7 +269,7 @@ def contrastive(label_predict, C, sim, label_true):
     similarity_predict = torch.matmul(label_predict_norm, label_predict_norm.T)
 
     positive_sum = torch.sum(similarity_predict * Cp, dim=0)
-    negative_sum = torch.sum(similarity_predict * Cn, dim=0)
+    negative_sum = torch.sum(similarity_predict * Cn+0.01, dim=0)
 
     temp = (positive_sum + 1e-6) / (positive_sum + negative_sum)
     loss_ = -torch.log(temp)
@@ -300,11 +300,11 @@ def thrC(C, ro_p, ro_n):
     Cp[Ind[pos_indices[0], pos_indices[1]], pos_indices[1]] = 1
     Cn[Ind[neg_indices[0], neg_indices[1]], neg_indices[1]] = 1
     # end = time.time()
-    Cn_s = get_negative_sample(C, Cp)
-    Cp_sum = torch.sum(Cp, dim=0)
-    Cn_sum = torch.sum(Cn_s, dim=0)
-    times = Cn_sum / Cp_sum
-    Cn = torch.logical_and(Cn, Cn_s)
+    # Cn_s = get_negative_sample(C, Cp)
+    # Cp_sum = torch.sum(Cp, dim=0)
+    # Cn_sum = torch.sum(Cn_s, dim=0)
+    # times = Cn_sum / Cp_sum
+    # Cn = torch.logical_and(Cn, Cn_s)
     # print("where:", end-start, "is_contiguous:", S_po.is_contiguous())
 
     return Cp, Cn
