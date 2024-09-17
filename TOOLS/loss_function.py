@@ -269,9 +269,9 @@ def contrastive(label_predict, C, sim, label_true):
     similarity_predict = torch.matmul(label_predict_norm, label_predict_norm.T)
 
     positive_sum = torch.sum(similarity_predict * Cp, dim=0)
-    negative_sum = torch.sum(similarity_predict * Cn+0.01, dim=0)
+    negative_sum = torch.sum(similarity_predict * Cn, dim=0)
 
-    temp = (positive_sum + 1e-6) / (positive_sum + negative_sum)
+    temp = (positive_sum + 1e-6) / (positive_sum + negative_sum+1)
     loss_ = -torch.log(temp)
     loss = torch.mean(loss_)
 

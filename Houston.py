@@ -12,7 +12,7 @@ torch.backends.cudnn.benchmark = False
 torch.backends.cudnn.enabled = True
 
 if torch.cuda.is_available():
-    device = torch.device("cuda:0")  # 使用GPU
+    device = torch.device("cuda:1")  # 使用GPU
     print("Using GPU")
 else:
     device = torch.device("cpu")  # 否则使用CPU
@@ -37,7 +37,7 @@ if __name__ == '__main__':
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--lr', type=float, default=0.001)
     parser.add_argument('--n_input', type=int, default=144)
-    parser.add_argument("--n_tz", type=int, default=32)
+    parser.add_argument("--n_tz", type=int, default=64)
     parser.add_argument("--n_sz", type=int, default=8)
     parser.add_argument("--patch_size", type=int, default=7)
     parser.add_argument("--rho", type=float, default=3.0, help="Convergence part")
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     parser.add_argument("--alpha", type=float, default=10)
     parser.add_argument("--beta", type=float, default=1.0)
     parser.add_argument("--gamma", type=float, default=1.0)
-    parser.add_argument("--eta", type=float, default=0.0002)
+    parser.add_argument("--eta", type=float, default=0.0003)
     parser.add_argument("--n_cluster", type=int, default=10)
     parser.add_argument("--lamda", type=float, default=0.10)
     parser.add_argument("--dataset", type=str, default="Houston")

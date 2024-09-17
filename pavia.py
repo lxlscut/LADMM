@@ -43,7 +43,7 @@ if __name__ == '__main__':
     parser.add_argument("--num_layer", type=int, default=5)
     parser.add_argument("--alpha", type=float, default=10.0)
     parser.add_argument("--beta", type=float, default=1.0)
-    parser.add_argument("--eta", type=float, default=0.0002)
+    parser.add_argument("--eta", type=float, default=0.0003)
     parser.add_argument("--gamma", type=float, default=1.0)
     parser.add_argument("--lamda", type=float, default=0.10)
     parser.add_argument("--n_cluster", type=int, default=10)

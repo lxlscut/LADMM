@@ -3,7 +3,7 @@ import re
 import numpy as np
 
 # 定义结果文件夹
-output_dir = 'result/houston0002'
+output_dir = 'result/houston0004'
 
 # 存储acc, nmi和kappa的列表
 acc_list = []
