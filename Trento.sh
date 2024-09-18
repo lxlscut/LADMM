@@ -7,7 +7,7 @@ FILE_PATH="Trento.py"
 SEEDS=(4426 7270 860 5390 5191 5734 6265 466 5578 8322)
 
 # 设置输出结果的目录
-OUTPUT_DIR="result/trento"
+OUTPUT_DIR="result/trento7"
 
 # 创建输出目录（如果不存在的话）
 mkdir -p $OUTPUT_DIR

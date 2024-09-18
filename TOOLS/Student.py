@@ -108,13 +108,13 @@ class Student(nn.Module):
         loss_info.add("loss_c", loss_c)
         loss_info.add("loss_pui", loss_pui)
 
+        # loss = loss_c + self.eta*(loss_class + 10*loss_cluster) + 0.001*loss_pui
         loss = loss_c + self.eta*(loss_class + 10*loss_cluster) + 0.001*loss_pui
-        # loss = loss_c + self.eta*(loss_class + 10*loss_cluster)
 
         return loss, loss_info
 
-    def train_stage_2(self, train_loader, teacher, dataset, epochs):
-        optimizer = torch.optim.Adam(self.classifier.parameters(), lr=2e-6)
+    def train_stage_2(self, train_loader, teacher, dataset,lr, epochs):
+        optimizer = torch.optim.Adam(self.classifier.parameters(), lr=lr)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=5, threshold=0.0001,
                                                          min_lr=1e-10, eps=1e-10, verbose=True)
         # Load the state dictionary from the file

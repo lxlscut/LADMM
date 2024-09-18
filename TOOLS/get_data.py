@@ -241,7 +241,7 @@ def standardize_label(y):
 
 class Load_my_Dataset():
 
-    def __init__(self, image_path, label_path, patch_size, device):
+    def __init__(self, image_path, label_path, patch_size, band_number, device):
         X, Y = get_data(image_path, label_path)
 
         # X, Y = X[150:350, 100:200, :], Y[150:350, 100:200]
@@ -249,13 +249,13 @@ class Load_my_Dataset():
         n_row, n_column, n_band = X.shape
 
         # X = minmax_scale(X.reshape(n_row * n_column, n_band)).reshape(X.shape)
-
-        # perform PCA
-        # from sklearn.decomposition import PCA
-        # n_components = 8
-        # pca = PCA(n_components)
-        # X = scale(X.reshape(n_row * n_column, n_band))
-        # X = pca.fit_transform(X.reshape(n_row * n_column, n_band)).reshape((n_row, n_column, n_components))
+        if not band_number == n_band:
+            # perform PCA
+            from sklearn.decomposition import PCA
+            n_components = band_number
+            pca = PCA(n_components)
+            X = scale(X.reshape(n_row * n_column, n_band))
+            X = pca.fit_transform(X.reshape(n_row * n_column, n_band)).reshape((n_row, n_column, n_components))
         x_train, y_patches, index = get_HSI_patches(x=X, gt=Y, ksize=(patch_size, patch_size), is_labeled=True)
         x_train = np.transpose(x_train, axes=(0, 3, 1, 2))
         n_samples, n_row, n_col, n_channel = x_train.shape
