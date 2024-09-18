@@ -36,7 +36,7 @@ def train_clustering(args,device):
     teacher.train_stage_1(train_loader=train_loader, dataset=dataset, epochs=200)
     torch.cuda.empty_cache()
 
-    # # Train student
+    # Train student
     student = Student(args=args).to(device=device)
     acc, nmi, kappa = student.train_stage_2(train_loader=train_loader, teacher=teacher, dataset=dataset, epochs=500)
     print("clustering_result:", "acc:",acc, "nmi:",nmi, "kappa:",kappa)

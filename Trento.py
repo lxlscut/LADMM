@@ -18,7 +18,6 @@ else:
     device = torch.device("cpu")  # 否则使用CPU
     print("Using CPU")
 
-
 def setup_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
@@ -26,8 +25,7 @@ def setup_seed(seed):
     random.seed(seed)
     torch.backends.cudnn.deterministic = True
 
-
-setup_seed(10000)
+setup_seed(8322)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -40,14 +38,14 @@ if __name__ == '__main__':
     parser.add_argument("--patch_size", type=int, default=7)
     parser.add_argument("--rho", type=float, default=3.0, help="convergence part")
     parser.add_argument("--num_layer", type=int, default=5)
-    parser.add_argument("--alpha", type=float, default=10)
-    parser.add_argument("--eta", type=float, default=0.0003)
-    parser.add_argument("--beta", type=float, default=1.0)
-    parser.add_argument("--gamma", type=float, default=1.0)
+    parser.add_argument("--alpha", type=float, default=10.0, help="self-representation")
+    parser.add_argument("--beta", type=float, default=1.0, help="sparsity l1 loss")
+    parser.add_argument("--gamma", type=float, default=1.0, help="loss_z")
+    parser.add_argument("--theta", type=float, default=5.0,  help="loss_en")
+    parser.add_argument("--eta", type=float, default=0.0003, help="loss_entropy")
     parser.add_argument("--lamda", type=float, default=0.10)
     parser.add_argument("--n_cluster", type=int, default=10)
     parser.add_argument("--dataset", type=str, default="Trento")
-
 
     args = parser.parse_args()
 

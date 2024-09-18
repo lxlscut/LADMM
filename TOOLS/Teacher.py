@@ -104,6 +104,7 @@ class Teacher(nn.Module):
         self.alpha = args.alpha
         self.beta = args.beta
         self.gamma = args.gamma
+        self.theta = args.theta
         self.eta = args.eta
         self.n_cluster = args.n_cluster
         # first stage:
@@ -206,7 +207,7 @@ class Teacher(nn.Module):
         loss_en = category_error(S=c_i, k=n_cluster, alpha=1)
 
         # loss = loss_ae + self.alpha * loss_recon + self.beta * loss_c1 + self.gamma * loss_z + loss_en
-        loss = loss_ae + self.alpha * loss_recon + self.beta * loss_c1 + self.gamma * loss_z + 5*loss_en
+        loss = loss_ae + self.alpha * loss_recon + self.beta * loss_c1 + self.gamma * loss_z + self.theta*loss_en
         # print("loss_ae", loss_ae)
 
         loss_info.add("loss_ae", loss_ae)
