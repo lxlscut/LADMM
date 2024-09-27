@@ -33,7 +33,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Scalable ADMM',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--lr', type=float, default=0.001)
+    parser.add_argument('--lr', type=float, default=5e-6, help='learning rate')
     parser.add_argument('--n_input', type=int, default=63)
     parser.add_argument("--n_tz", type=int, default=64)
     parser.add_argument("--n_sz", type=int, default=8)
