@@ -220,7 +220,7 @@ class Teacher(nn.Module):
 
     def train_stage_1(self, train_loader, dataset, epochs):
         self.ae.initialize_weights()
-        optimizer = torch.optim.Adam(self.ae.parameters(), lr=0.0001)
+        optimizer = torch.optim.Adam(self.parameters(), lr=0.0001)
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=5, threshold=0.001,
                                                          min_lr=1e-10, eps=1e-10, verbose=True)
         smoothed_total_loss = None
@@ -237,7 +237,7 @@ class Teacher(nn.Module):
                 similarity_matrix = cos_sim(data)
                 z0 = torch.zeros((data.shape[0], data.shape[0]), device=self.rho.device)
                 X, x_rescon, h, y_i, c_i, z_s = self.forward(data, z0)
-
+                # print(self.rho)
                 loss, loss_info = self.loss(X_p=X, X_r=x_rescon, H=h, c_i=c_i, H_r=y_i, z_i=z_s, sim = similarity_matrix,
                                             n_cluster=self.n_cluster, label_true=label)
                 loss.backward()
