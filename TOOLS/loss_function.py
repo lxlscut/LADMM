@@ -7,7 +7,7 @@ import numpy as np
 from scipy.signal import correlate
 
 from TOOLS.info import VariableContainer
-from TOOLS.sample_generation import generate_negative_sample, robust_sample,generate_positive_samples
+from TOOLS.sample_generation import generate_negative_sample, robust_sample, generate_positive_samples
 # from TOOLS.visdom import FunctionMonitor
 import torch
 
@@ -88,6 +88,7 @@ def l1_regularization_columnwise(matrix, lambda_reg):
     """
     return lambda_reg * torch.mean(torch.norm(matrix, p=1, dim=0))
 
+
 def Elastic_loss(matrix, lambda_reg):
     """
     Apply L1 regularization column-wise to a 2D matrix.
@@ -99,8 +100,8 @@ def Elastic_loss(matrix, lambda_reg):
     Returns:
     Tensor: The L1 regularization loss calculated column-wise.
     """
-    return lambda_reg * torch.mean(torch.norm(matrix, p=1, dim=0)) + (1-lambda_reg) * torch.mean(torch.norm(matrix, p=2, dim=0))
-
+    return lambda_reg * torch.mean(torch.norm(matrix, p=1, dim=0)) + (1 - lambda_reg) * torch.mean(
+        torch.norm(matrix, p=2, dim=0))
 
 
 def l1_regularization_columnwise_masked(matrix, z, lambda_reg):
@@ -216,7 +217,6 @@ def compute_graph_regularization(Z, A, lambda_reg):
     return reg_term
 
 
-
 def contrastive(label_predict, C, sim, label_true):
     """
     :param label_predict: the output of classifier network
@@ -231,11 +231,18 @@ def contrastive(label_predict, C, sim, label_true):
     Cp, Cn = thrC(S, ro_p=0.90, ro_n=0.10)
 
     if sim is not None:
-        CosP = sim>0.95
+        CosP = sim > 0.95
+        # CosP = topk_rows_and_columns_to_one(matrix=sim, k=5)
+
+        # Cosp_sum = torch.sum(CosP, dim=0)
+        # CosP_show = Cosp_sum.detach().cpu().numpy()
         Cp = torch.logical_or(Cp, CosP).to(torch.float32)
         Cn = generate_negative_sample(Cn, Cp)
-        CosN = sim<0.5
+        CosN = sim < 0.50
         Cn = torch.logical_and(Cn, CosN)
+
+    Cp.fill_diagonal_(False)
+    Cn.fill_diagonal_(False)
 
     label_true_mask = (label_true[:, None] == label_true).int()
 
@@ -255,7 +262,6 @@ def contrastive(label_predict, C, sim, label_true):
     # 计算 negative_sample_number
     negative_sample_number = torch.mean(torch.sum(Cn.float(), dim=0))
 
-
     loss_info.add("positive_sample_number", positive_sample_number)
     loss_info.add("negative_sample_number", negative_sample_number)
     loss_info.add("wrong_negative_rate", wrong_negative_rate)
@@ -264,14 +270,19 @@ def contrastive(label_predict, C, sim, label_true):
     if label_predict is None:
         return loss_info
 
-
     label_predict_norm = F.normalize(label_predict, p=2, dim=1)
     similarity_predict = torch.matmul(label_predict_norm, label_predict_norm.T)
 
-    positive_sum = torch.sum(similarity_predict * Cp, dim=0)
-    negative_sum = torch.sum(similarity_predict * Cn, dim=0)
+    positive_sum_r = torch.sum(similarity_predict * Cp.T, dim=1)
+    negative_sum_r = torch.sum(similarity_predict * Cn.T + 0.01, dim=1)
 
-    temp = (positive_sum + 1e-6) / (positive_sum + negative_sum+1)
+    positive_sum_c = torch.sum(similarity_predict * Cp, dim=0)
+    negative_sum_c = torch.sum(similarity_predict * Cn + 0.01, dim=0)
+
+    positive_sum = positive_sum_r + positive_sum_c
+    negative_sum = negative_sum_r + negative_sum_c
+
+    temp = (positive_sum + 1e-6) / (positive_sum + negative_sum)
     loss_ = -torch.log(temp)
     loss = torch.mean(loss_)
 
@@ -310,6 +321,23 @@ def thrC(C, ro_p, ro_n):
     return Cp, Cn
 
 
+def topk_rows_and_columns_to_one(matrix, k):
+    # 对每一行和每一列分别取前 k 个最大值的位置设置为 True，使用布尔掩码实现更高效的操作
+
+    # 获取每一行的前 k 个元素的索引，并创建行掩码
+    row_values, row_indices = torch.topk(matrix, k, dim=1)
+    row_mask = torch.zeros_like(matrix, dtype=torch.bool).scatter_(1, row_indices, True)
+
+    # 获取每一列的前 k 个元素的索引，并创建列掩码
+    col_values, col_indices = torch.topk(matrix, k, dim=0)
+    col_mask = torch.zeros_like(matrix, dtype=torch.bool).scatter_(0, col_indices, True)
+
+    # 合并行和列的掩码，取并集
+    final_mask = row_mask | col_mask
+
+    return final_mask
+
+
 # Already have Cp, now calculate Cn
 def get_negative_sample(C, Cp, times=3):
     """
@@ -329,7 +357,6 @@ def get_negative_sample(C, Cp, times=3):
     Cn[Ind[neg_indices[0], neg_indices[1]], neg_indices[1]] = 1
 
     return Cn
-
 
 
 def uniform_loss(x, lambda_=10, epsilon=1e-6):
@@ -354,7 +381,7 @@ def combined_entropy_loss(soft_assignment_matrix, alpha=0.0, beta=1.0):
 
     # 计算每一行的熵，并取所有行熵的平均值
     row_entropy = -torch.sum(soft_assignment_matrix * torch.log(soft_assignment_matrix + 1e-9), dim=1)
-    row_entropy_loss = torch.mean(row_entropy)/max_column_entropy
+    row_entropy_loss = torch.mean(row_entropy) / max_column_entropy
 
     # 计算每一列的平均值
     column_means = torch.mean(soft_assignment_matrix, dim=0)
@@ -372,10 +399,9 @@ def combined_entropy_loss(soft_assignment_matrix, alpha=0.0, beta=1.0):
     return total_loss
 
 
-
 # 类别误差函数
 def category_error(S, k, alpha):
-    S = 0.5*(torch.abs(S)+torch.abs(S.T))
+    S = 0.5 * (torch.abs(S) + torch.abs(S.T))
     W = torch.abs(S)
     W.fill_diagonal_(0)
 
@@ -388,7 +414,6 @@ def category_error(S, k, alpha):
     laplacian_term = torch.sum(torch.abs(eigvals[:k]))
 
     return alpha * laplacian_term
-
 
 
 def custom_contrastive_loss(H, H_r):
