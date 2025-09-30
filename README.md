@@ -124,6 +124,5 @@ The summary is written to `final.txt` inside the chosen directory.
 
 - **Datasets**: add new cases in `TOOLS/train.py` or refactor the loader configuration if you expect to swap datasets frequently.
 - **Schedulers**: `Student.train_stage_2` currently uses `ReduceLROnPlateau`; tweak or replace the scheduler as needed.
-- **Housekeeping**: functions in `TOOLS/loss_function.py` that are annotated with `# NOTE: currently unused` are safe to delete once you confirm no external dependency relies on them.
-
+  
 Feel free to build on top of these scripts or file issues if you run into problems.
