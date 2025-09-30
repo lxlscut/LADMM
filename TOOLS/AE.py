@@ -4,25 +4,24 @@ import torch.nn.init as init
 class Ae(nn.Module):
     def __init__(self, n_input, n_z):
         super(Ae, self).__init__()
-        # 编码器
+        # encoder
         self.encoder = nn.Sequential()
         self.encoder.add_module("cov01", nn.Conv2d(in_channels=n_input, out_channels=64, kernel_size=[1, 1], stride=1,
                                                    padding='same'))
         self.encoder.add_module("bn01", nn.BatchNorm2d(64))
         self.encoder.add_module("relu01", nn.LeakyReLU(negative_slope=0.01))
 
-
         self.encoder.add_module("cov02", nn.Conv2d(in_channels=64, out_channels=64, kernel_size=[3, 3], stride=1,
                                                    padding='same'))
         self.encoder.add_module("bn02", nn.BatchNorm2d(64))
         self.encoder.add_module("relu02", nn.LeakyReLU(negative_slope=0.01))
 
-        self.encoder.add_module("cov03", nn.Conv2d(in_channels=64, out_channels=n_z, kernel_size=[3, 3], stride=1,
+        self.encoder.add_module("cov06", nn.Conv2d(in_channels=64, out_channels=n_z, kernel_size=[3, 3], stride=1,
                                                    padding='same'))
-        self.encoder.add_module("bn03", nn.BatchNorm2d(n_z))
-        self.encoder.add_module("relu03", nn.LeakyReLU(negative_slope=0.01))
+        self.encoder.add_module("bn06", nn.BatchNorm2d(n_z))
+        self.encoder.add_module("relu06", nn.LeakyReLU(negative_slope=0.01))
 
-        # 解码器
+        # decoder
         self.decoder = nn.Sequential()
 
         self.decoder.add_module("tr01",
@@ -31,13 +30,7 @@ class Ae(nn.Module):
         self.decoder.add_module('rbn1', nn.BatchNorm2d(64))
         self.decoder.add_module("rre01", nn.LeakyReLU(negative_slope=0.01))
 
-        self.decoder.add_module("tr02",
-                                nn.ConvTranspose2d(in_channels=64, out_channels=64, kernel_size=[3, 3], stride=1,
-                                                   padding=1))
-        self.decoder.add_module('rbn2', nn.BatchNorm2d(64))
-        self.decoder.add_module("rre02", nn.LeakyReLU(negative_slope=0.01))
-
-        self.decoder.add_module("tr03",
+        self.decoder.add_module("tr04",
                                 nn.ConvTranspose2d(in_channels=64, out_channels=n_input, kernel_size=[1, 1], stride=1,
                                                    padding=0))
 

@@ -8,5 +8,7 @@ def cos_sim(data):
     # Normalize the data along the feature dimension
     data = F.normalize(data, p=2, dim=1)
     # Compute the cosine similarity matrix
-    return torch.mm(data, data.transpose(0, 1))
+    sim = torch.mm(data, data.transpose(0, 1))
+
+    return sim
 

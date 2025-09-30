@@ -27,5 +27,5 @@ class FunctionMonitor:
                           win=self.plot, update='append')
         self.counter += 1
 
-# 使用例子
+# Usage example
 monitor = FunctionMonitor(var_name='Random Value', title_name='Random Value Monitoring')

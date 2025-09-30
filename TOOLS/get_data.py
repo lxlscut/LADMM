@@ -24,7 +24,7 @@ def get_data(img_path, label_path):
         return img_mat.get(img_key[0]).astype('float32'), img_mat.get(img_key[1]).astype('int8')
 
 
-"""先不设置步长，默认是1"""
+"""Default stride is 1 when it is not explicitly specified."""
 
 
 # @njit()
@@ -32,7 +32,7 @@ def get_data_patch(data, patch_size):
     patch_w = patch_size[0]
     patch_h = patch_size[1]
 
-    # 获取pad的尺寸
+    # compute padding sizes
     pad_h = int((patch_h - 1) / 2)
     pad_w = int((patch_w - 1) / 2)
     # pad_h = pad_h.astype(np.int16)
@@ -40,7 +40,7 @@ def get_data_patch(data, patch_size):
 
     res = np.zeros((data.shape[0], data.shape[1], patch_w, patch_h, data.shape[2]))
 
-    # 获取pad后的图像
+    # obtain the padded image
     data_ = np.pad(data, ((pad_h, pad_h), (pad_w, pad_w), (0, 0)), 'edge')
 
     for i in range(pad_h, data.shape[0] - pad_h):
@@ -52,21 +52,26 @@ def get_data_patch(data, patch_size):
 
 def get_patch(array, window=(0,), asteps=None, wsteps=None, axes=None, toend=True):
     """
-    :param array: 需要处理的数据
-    :param window: 窗口的大小，如果是一个数，那么窗口对应的是最后一个维度的长度，如果是一个tuple,那么对应的是block的维度及大小
-    :param asteps:
-    :param wsteps:
-    :param axes: 对应window对应的每一个维度
-    :param toend:
-    :return:
+    Extract sliding windows from an array using numpy stride tricks.
+
+    Args:
+        array: array to be windowed.
+        window: window size; a scalar targets the last dimension, a tuple defines the block shape.
+        asteps: strides between adjacent blocks.
+        wsteps: strides within each block.
+        axes: axes along which the window is applied.
+        toend: whether to move block axes to the end of the output shape.
+
+    Returns:
+        numpy.ndarray: view of the input containing the extracted patches.
     """
-    array = np.asarray(array)  # 多余？
+    array = np.asarray(array)  # redundant?
     orig_shape = np.asarray(array.shape)
 
-    # 将标量转换为数组，而数组泽保持不变
+    # convert scalars to arrays while leaving arrays unchanged
     window = np.atleast_1d(window).astype(int)
 
-    # 确定block的维度及每个维度的大小
+    # derive the block dimensions and their sizes
     if axes is not None:
         axes = np.atleast_1d(axes)
         w = np.zeros(array.ndim, dtype=int)
@@ -74,43 +79,43 @@ def get_patch(array, window=(0,), asteps=None, wsteps=None, axes=None, toend=Tru
             w[axes] = size
         window = w
 
-    # 显然window是个一维的标量
+    # window must be a one-dimensional array
     if window.ndim > 1:
         raise ValueError("window must be one-dimenional.")
     if np.any(window < 0):
-        raise ValueError("每个维度的长度必须大于一.")
-    # 此函数的作用是从原始大矩阵中分割出一个个小块，所以割出的小块的大小肯定比原始的矩阵小
+        raise ValueError("Each dimension length must be greater than one.")
+    # This function extracts sub-blocks, so each block must be no larger than the original array
     if len(array.shape) < len(window):
-        raise ValueError("window的维度大小必须比原来的小或者相同")
+        raise ValueError("Window dimensionality must be less than or equal to the input array.")
 
     _asteps = np.ones_like(orig_shape)
-    # asteps 为窗口外的步长应该
+    # asteps represent the stride between adjacent blocks
     if asteps is not None:
         asteps = np.atleast_1d(asteps)
         if asteps.ndim != 1:
-            raise ValueError('asteps 为window的每个维度的步长组成的list只有一维')
+            raise ValueError('asteps must be a one-dimensional list of strides for each window dimension')
         if len(asteps) > array.ndim:
             raise ValueError('block dims bigger than array dims')
-        # 什么意思？调试
+        # debugging helper
         _asteps[-len(asteps):] = asteps
         if np.any(asteps < 1):
-            raise ValueError("步长必须大于等于1")
+            raise ValueError("Strides must be greater than or equal to 1.")
     asteps = _asteps
 
     _wsteps = np.ones_like(window)
     if wsteps is not None:
         wsteps = np.atleast_1d(wsteps)
-        # 这是窗内的步长，每一个维度的抽样步长
+        # wsteps control sampling strides inside the window
         if wsteps.shape != window.shape:
-            raise ValueError("维度错误")
+            raise ValueError("Invalid dimension specification")
         if np.any(wsteps <= 0):
-            raise ValueError("所有的步长都必须大于0")
+            raise ValueError("All strides must be greater than 0")
         _wsteps[:] = wsteps
-        # steps至少也得是1吧
+        # steps should be at least 1
         _wsteps[window == 0] = 1
     wsteps = _wsteps
 
-    # window的大小必须在对应的每一个维度上都要小于或者等于原始矩阵
+    # window size multiplied by stride must not exceed the array dimensions
     if np.any(orig_shape[-len(window):] < window * wsteps):
         raise ValueError('window*wsteps larger than array in at least one demension')
 
@@ -161,7 +166,7 @@ def get_HSI_patches(x, gt, ksize, stride=(1, 1), padding='reflect', is_index=Fal
     :param is_labeled:
     :return:
     """
-    # np.ceil向上取整，
+    # np.ceil performs a ceiling operation
     new_height = np.ceil(x.shape[0] / stride[0])
     new_width = np.ceil(x.shape[1] / stride[1])
     band = x.shape[2]
@@ -174,24 +179,22 @@ def get_HSI_patches(x, gt, ksize, stride=(1, 1), padding='reflect', is_index=Fal
     pad_left = int(pad_needed_width / 2)
     pad_right = int(pad_needed_width - pad_left)
 
-    # 三维的图像，每个dim都要进行pad
+    # pad every dimension of the 3D image
     x = np.pad(x, ((pad_top, pad_down), (pad_left, pad_right), (0, 0)), padding)
-    # 标签也需要padding？
     gt = np.pad(gt, ((pad_top, pad_down), (pad_left, pad_right)), padding)
 
     n_row, n_clm, n_band = x.shape
 
-    # 多余？？？有作用吗？
     x = np.reshape(x, (n_row, n_clm, n_band))
     y = np.reshape(gt, (n_row, n_clm))
-    # 运算采取tuple的格式
+    # treat the window as a tuple
     ksize = (ksize[0], ksize[1])
 
-    # 获取patch
+    # extract patches
     x_patches = get_patch(x, ksize, axes=(1, 0))
     y_patches = get_patch(y, ksize, axes=(1, 0))
 
-    # 因为处理后的标签也会是个7*7的窗口大小，因此要选出中间元素作为标签
+    # use the center element of the 7x7 label patch as the ground-truth label
     i_1, i_2 = int((ksize[0] - 1) // 2), int((ksize[1] - 1) // 2)
 
     min_val = np.min(y)
@@ -222,7 +225,7 @@ def get_HSI_patches(x, gt, ksize, stride=(1, 1), padding='reflect', is_index=Fal
     return x_patches_nonzero, y_patches_nonzero, nonzero_index
 
 
-"""原始的y的分布为间断的数值"""
+"""The original y values are non-contiguous integers."""
 
 
 def standardize_label(y):
@@ -244,11 +247,11 @@ class Load_my_Dataset():
     def __init__(self, image_path, label_path, patch_size, band_number, device):
         X, Y = get_data(image_path, label_path)
 
-        # X, Y = X[150:350, 100:200, :], Y[150:350, 100:200]
+        # only for trento dataset
+        # X, Y = X[ :,100 :400, :], Y[:,100:400,]
 
         n_row, n_column, n_band = X.shape
 
-        # X = minmax_scale(X.reshape(n_row * n_column, n_band)).reshape(X.shape)
         if not band_number == n_band:
             # perform PCA
             from sklearn.decomposition import PCA
@@ -258,9 +261,8 @@ class Load_my_Dataset():
             X = pca.fit_transform(X.reshape(n_row * n_column, n_band)).reshape((n_row, n_column, n_components))
         x_train, y_patches, index = get_HSI_patches(x=X, gt=Y, ksize=(patch_size, patch_size), is_labeled=True)
         x_train = np.transpose(x_train, axes=(0, 3, 1, 2))
-        n_samples, n_row, n_col, n_channel = x_train.shape
-        x_train = scale(x_train.reshape((n_samples, -1))).reshape((n_samples, n_row, n_col, -1))
-
+        n_samples, n_channel, n_row, n_col  = x_train.shape
+        x_train = scale(x_train.reshape((n_samples, -1))).reshape((n_samples,n_channel, n_row, n_col))
 
 
         # perform PCA

@@ -1,79 +1,18 @@
 import torch
-from torch_scatter import scatter_mean
 import torch.nn.functional as F
 import torch_scatter as scatter
 
 def generate_negative_sample(Cn, Cp):
     Cp = expand_positve_mask(Cp, level=5)
     Cp = (Cp>0).float()
-
     Cp = torch.matmul(Cp.T, Cp)
     Cn = torch.logical_and(Cn, torch.logical_not(Cp))
-
-
     return Cn
-
-# def compute_mean_from_indices(a, b):
-#     """
-#     Compute the mean of selected values from tensor `a` based on indices from tensor `b`.
-#
-#     Parameters:
-#     a (torch.Tensor): A 2D tensor with shape [N, M].
-#     b (torch.Tensor): A 2D tensor with shape [P, Q] containing indices.
-#
-#     Returns:
-#     torch.Tensor: A tensor containing the means with shape [N, P].
-#     """
-#     # Prepare the row indices and column indices for indexing
-#     rows = torch.arange(a.size(0)).unsqueeze(1)  # Shape: [N, 1]
-#     cols = b  # Shape: [P, Q]
-#
-#     # Repeat tensor `a` to match the indexing shape
-#     expanded_a = a.unsqueeze(1).expand(-1, b.size(0), -1)  # Shape: [N, P, M]
-#
-#     # Indexing tensor to match the required shape
-#     indices = cols.unsqueeze(0)  # Shape: [1, P, Q]
-#     indices = indices.expand(a.size(0), -1, -1)  # Shape: [N, P, Q]
-#
-#     # Gather values using the indices
-#     selected_values = torch.gather(expanded_a, 2, indices)  # Shape: [N, P, Q]
-#
-#     # Compute the mean of the selected values along the last dimension
-#     c = selected_values.float().mean(dim=2)  # Shape: [N, P]
-#
-#     return c
-
-# def generate_positive_sample(Cp, sim):
-#     Cp_n = F.normalize(Cp, dim=0)
-#     similarity_matrix = torch.matmul(Cp_n.T, Cp_n)
-#     similarity_s, top_5 = similarity_matrix.topk(5, dim=1)
-#     # similarity_s, top_5 = sim.topk(5, dim=1)
-#
-#     # 获取 Cp 的形状
-#     # similarity_s_show = similarity_s.detach().cpu().numpy()
-#
-#     # Perform the indexing operation with broadcasting
-#     extracted_matrix = compute_mean_from_indices(Cp, top_5)
-#
-#     extracted_matrix_show = extracted_matrix.cpu().numpy()
-#
-#     extracted_matrix = ((extracted_matrix>0.4)).float()
-#
-#     # extracted_matrix = torch.logical_and(extracted_matrix,Cp)
-#
-#     extracted_matrix = (torch.matmul(extracted_matrix.T,extracted_matrix)>0)
-#
-#     Cp = torch.logical_or(extracted_matrix,Cp).int()
-#
-#     # extracted_matrix_show = extracted_matrix.cpu().numpy()
-#
-#     return Cp
-
 
 def generate_positive_samples(Cp):
     Cp_EP = expand_positve_mask_(Cp, level=5)
     Cp_EP = torch.logical_or(Cp,Cp_EP).int()
-    Cp_show = Cp.cpu().numpy()
+    # Cp_show = Cp.cpu().numpy()
     return Cp_EP
 
 def expand_positve_mask_(positive_mask, level):
@@ -86,12 +25,75 @@ def expand_positve_mask_(positive_mask, level):
 
 
 def expand_positve_mask(positive_mask, level):
+    # the number of positive samples
+    sum_p = torch.sum(positive_mask)
+    # the negative samples should lie in 3times to 10times of positive samples
+    sum_n_up = sum_p*10
+    sum_n_down = sum_p*3
     expand_mask = positive_mask
     for i in range(level):
         positive_mask = torch.matmul(positive_mask.float(), expand_mask)
-        expand_mask = (positive_mask>0).float()
-        # expand_mask = torch.where(positive_mask > 0, torch.tensor(1), positive_mask)
+        # current_negative_mask = (positive_mask==0).float()
+        # if torch.sum(current_negative_mask)<sum_n_down:
+        #     return expand_mask
+        expand_mask = (positive_mask > 0).float()
     return positive_mask
+
+
+def set_top_n_to_one(matrix, N):
+    """
+    Set the locations of the top-N values in the matrix to 1 and keep the rest unchanged.
+
+    Args:
+    - matrix (torch.Tensor): input matrix
+    - N (int): number of elements that will be set to 1
+
+    Returns:
+    - torch.Tensor: resulting mask tensor
+    """
+    # obtain the indices of the top-N values
+    # convert N to a Python int if it is a tensor
+    # if isinstance(N, torch.Tensor):
+    #     N = N.item()
+    # N = int(N)
+    top_values, top_indices = torch.topk(matrix.view(-1), N)
+
+    # create a zero matrix with the same shape as the input
+    result = torch.zeros_like(matrix)
+
+    # set the selected positions to 1
+    result.view(-1)[top_indices] = 1
+
+    return result
+
+def set_bottom_n_to_one(matrix, N):
+    """
+    Set the locations of the bottom-N values in the matrix to 1 and keep the rest unchanged.
+
+    Args:
+    - matrix (torch.Tensor): input matrix
+    - N (int): number of elements with the smallest values to flag as 1
+
+    Returns:
+    - torch.Tensor: resulting mask tensor
+    """
+    # obtain the indices of the bottom-N values
+
+    # convert N to a Python int if it is a tensor
+    # if isinstance(N, torch.Tensor):
+    #     N = N.item()
+    # N = int(N)
+    # N  = min(N,200000)
+
+    bottom_values, bottom_indices = torch.topk(matrix.view(-1), N, largest=False)
+
+    # create a zero matrix with the same shape as the input
+    result = torch.zeros_like(matrix)
+
+    # set the selected positions to 1
+    result.view(-1)[bottom_indices] = 1
+
+    return result
 
 
 def robust_sample(Cp):
@@ -142,3 +144,7 @@ def robust_sample(Cp):
     result[selected_index[:, 0], selected_index[:, 1]] = 1
 
     return result
+
+
+
+

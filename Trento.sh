@@ -1,24 +1,61 @@
+##!/bin/bash
+#
+## Configure the target file to update
+#FILE_PATH="Trento.py"
+#
+## Define the list of random seeds
+#SEEDS=(4426 7270 860 5390 5191 5734 6265 466 5578 8322)
+#
+#
+### Set the output directory
+##OUTPUT_DIR="result/trento9"
+##
+### Create the output directory if it does not exist
+##mkdir -p $OUTPUT_DIR
+#
+#DEVICE="cuda:1"
+#
+## Sweep lambda from 0.01 to 0.20 with a step of 0.01
+#for lamda in $(seq 0.01 0.01 0.2); do
+#    # Create the output directory
+#    OUTPUT_DIR="result/trento_lamda_${lamda}"
+#    mkdir -p "$OUTPUT_DIR"
+#
+#    # For each lambda value, run ten different seeds
+#    for SEED in "${SEEDS[@]}"; do
+#
+#        sed -i "s/setup_seed([0-9]\+)/setup_seed($SEED)/" $FILE_PATH
+#
+#        # Pass lambda and seed through arguments
+#        python3 $FILE_PATH --lamda "${lamda}"> "$OUTPUT_DIR/result_$SEED.txt"
+#
+#        echo "Run completed for lamda $lamda, seed $SEED, result saved to $OUTPUT_DIR/result_$SEED.txt"
+#    done
+#done
+
+
 #!/bin/bash
 
-# 设置要替换的文件名
+# Specify the file to update
 FILE_PATH="Trento.py"
 
-# 定义随机种子列表
+# Define the list of random seeds
 SEEDS=(4426 7270 860 5390 5191 5734 6265 466 5578 8322)
 
-# 设置输出结果的目录
-OUTPUT_DIR="result/trento7"
+DEVICE="cuda:1"
+# Set the output directory
+OUTPUT_DIR="result/trent_2025"
 
-# 创建输出目录（如果不存在的话）
+# Create the output directory if it does not exist
 mkdir -p $OUTPUT_DIR
 
-# 循环遍历每个种子值
+# For each lambda value, run ten different seeds
 for SEED in "${SEEDS[@]}"; do
-    # 使用sed命令查找并替换 setup_seed 后的任意数字为当前的 SEED 值
+
     sed -i "s/setup_seed([0-9]\+)/setup_seed($SEED)/" $FILE_PATH
 
-    # 运行程序并将结果保存到相应的文件中
+    # Pass lambda and seed through arguments
     python3 $FILE_PATH > "$OUTPUT_DIR/result_$SEED.txt"
 
-    echo "Run completed for seed $SEED, result saved to $OUTPUT_DIR/result_$SEED.txt"
+    echo "Run completed for lamda $lamda, seed $SEED, result saved to $OUTPUT_DIR/result_$SEED.txt"
 done
