@@ -1,0 +1,1457 @@
+/home/xianlli/anaconda3/envs/spectralnet-20240530/lib/python3.11/site-packages/sklearn/preprocessing/_data.py:240: UserWarning: Numerical issues were encountered when centering the data and might not be solved. Dataset may contain too large values. You may need to prescale your features.
+  warnings.warn(
+/home/xianlli/anaconda3/envs/spectralnet-20240530/lib/python3.11/site-packages/sklearn/preprocessing/_data.py:259: UserWarning: Numerical issues were encountered when scaling the data and might not be solved. The standard deviation of the data is probably very close to 0. 
+  warnings.warn(
+2025-12-23 22:31:29.724505
+Using GPU
+x_patches shape: (130, 130, 144, 7, 7), labels: [0 1 2 3 4 5 6 7]
+Namespace(seed=466, lr=1e-05, n_input=144, n_tz=64, n_sz=8, patch_size=7, rho=2.0, num_layer=5, alpha=10, beta=1.0, gamma=1.0, theta=5.0, eta=0.0, n_cluster=7, lamda=0.01, device='cuda:0', dataset='Houston')
+the number of samples:  6104 (tensor([0, 1, 2, 3, 4, 5, 6], device='cuda:0', dtype=torch.int8), tensor([1342,  863,  558, 2003,  130,  413,  795], device='cuda:0'))
+current learning rate: 0.0001
+Epoch 1: train_loss=22.365707, smooth_loss=22.365707
+Epoch 1/400, Total Loss: 22.365707397460938
+current learning rate: 0.0001
+Epoch 2: train_loss=15.973310, smooth_loss=21.726467
+Significant improvement detected. Counter reset.
+Epoch 2/400, Total Loss: 15.973310470581055
+current learning rate: 0.0001
+Epoch 3: train_loss=12.945950, smooth_loss=20.848415
+Significant improvement detected. Counter reset.
+Epoch 3/400, Total Loss: 12.94594955444336
+current learning rate: 0.0001
+Epoch 4: train_loss=11.325987, smooth_loss=19.896172
+Significant improvement detected. Counter reset.
+Epoch 4/400, Total Loss: 11.325986862182617
+current learning rate: 0.0001
+Epoch 5: train_loss=10.107161, smooth_loss=18.917269
+Significant improvement detected. Counter reset.
+Epoch 5/400, Total Loss: 10.107160568237305
+current learning rate: 0.0001
+Epoch 6: train_loss=9.327010, smooth_loss=17.958242
+Significant improvement detected. Counter reset.
+Epoch 6/400, Total Loss: 9.327010154724121
+current learning rate: 0.0001
+Epoch 7: train_loss=8.782956, smooth_loss=17.040714
+Significant improvement detected. Counter reset.
+Epoch 7/400, Total Loss: 8.78295612335205
+current learning rate: 0.0001
+Epoch 8: train_loss=8.353412, smooth_loss=16.171984
+Significant improvement detected. Counter reset.
+Epoch 8/400, Total Loss: 8.353411674499512
+current learning rate: 0.0001
+Epoch 9: train_loss=7.775242, smooth_loss=15.332309
+Significant improvement detected. Counter reset.
+Epoch 9/400, Total Loss: 7.775241851806641
+current learning rate: 0.0001
+Epoch 10: train_loss=7.476977, smooth_loss=14.546776
+Significant improvement detected. Counter reset.
+Epoch 10/400, Total Loss: 7.476977348327637
+current learning rate: 0.0001
+Epoch 11: train_loss=7.106369, smooth_loss=13.802735
+Significant improvement detected. Counter reset.
+Epoch 11/400, Total Loss: 7.106368541717529
+current learning rate: 0.0001
+Epoch 12: train_loss=7.050369, smooth_loss=13.127499
+Significant improvement detected. Counter reset.
+Epoch 12/400, Total Loss: 7.050368785858154
+current learning rate: 0.0001
+Epoch 13: train_loss=6.656535, smooth_loss=12.480402
+Significant improvement detected. Counter reset.
+Epoch 13/400, Total Loss: 6.656534671783447
+current learning rate: 0.0001
+Epoch 14: train_loss=6.455610, smooth_loss=11.877923
+Significant improvement detected. Counter reset.
+Epoch 14/400, Total Loss: 6.4556097984313965
+current learning rate: 0.0001
+Epoch 15: train_loss=6.193563, smooth_loss=11.309486
+Significant improvement detected. Counter reset.
+Epoch 15/400, Total Loss: 6.193562984466553
+current learning rate: 0.0001
+Epoch 16: train_loss=6.046238, smooth_loss=10.783161
+Significant improvement detected. Counter reset.
+Epoch 16/400, Total Loss: 6.046238422393799
+current learning rate: 0.0001
+Epoch 17: train_loss=5.992854, smooth_loss=10.304130
+Significant improvement detected. Counter reset.
+Epoch 17/400, Total Loss: 5.99285364151001
+current learning rate: 0.0001
+Epoch 18: train_loss=5.770990, smooth_loss=9.850815
+Significant improvement detected. Counter reset.
+Epoch 18/400, Total Loss: 5.770990371704102
+current learning rate: 0.0001
+Epoch 19: train_loss=5.692725, smooth_loss=9.435005
+Significant improvement detected. Counter reset.
+Epoch 19/400, Total Loss: 5.692724704742432
+current learning rate: 0.0001
+Epoch 20: train_loss=5.418196, smooth_loss=9.033324
+Significant improvement detected. Counter reset.
+Epoch 20/400, Total Loss: 5.418196201324463
+current learning rate: 0.0001
+Epoch 21: train_loss=5.389582, smooth_loss=8.668950
+Significant improvement detected. Counter reset.
+Epoch 21/400, Total Loss: 5.38958215713501
+current learning rate: 0.0001
+Epoch 22: train_loss=5.230583, smooth_loss=8.325113
+Significant improvement detected. Counter reset.
+Epoch 22/400, Total Loss: 5.2305827140808105
+current learning rate: 0.0001
+Epoch 23: train_loss=5.214168, smooth_loss=8.014019
+Significant improvement detected. Counter reset.
+Epoch 23/400, Total Loss: 5.214167594909668
+current learning rate: 0.0001
+Epoch 24: train_loss=4.977601, smooth_loss=7.710377
+Significant improvement detected. Counter reset.
+Epoch 24/400, Total Loss: 4.977601051330566
+current learning rate: 0.0001
+Epoch 25: train_loss=4.869296, smooth_loss=7.426269
+Significant improvement detected. Counter reset.
+Epoch 25/400, Total Loss: 4.869296073913574
+current learning rate: 0.0001
+Epoch 26: train_loss=4.913374, smooth_loss=7.174979
+Significant improvement detected. Counter reset.
+Epoch 26/400, Total Loss: 4.913373947143555
+current learning rate: 0.0001
+Epoch 27: train_loss=4.765961, smooth_loss=6.934077
+Significant improvement detected. Counter reset.
+Epoch 27/400, Total Loss: 4.765960693359375
+current learning rate: 0.0001
+Epoch 28: train_loss=4.676950, smooth_loss=6.708364
+Significant improvement detected. Counter reset.
+Epoch 28/400, Total Loss: 4.676949977874756
+current learning rate: 0.0001
+Epoch 29: train_loss=4.618463, smooth_loss=6.499373
+Significant improvement detected. Counter reset.
+Epoch 29/400, Total Loss: 4.618463039398193
+current learning rate: 0.0001
+Epoch 30: train_loss=4.560716, smooth_loss=6.305508
+Significant improvement detected. Counter reset.
+Epoch 30/400, Total Loss: 4.560716152191162
+current learning rate: 0.0001
+Epoch 31: train_loss=4.435110, smooth_loss=6.118468
+Significant improvement detected. Counter reset.
+Epoch 31/400, Total Loss: 4.435110092163086
+current learning rate: 0.0001
+Epoch 32: train_loss=4.340782, smooth_loss=5.940699
+Significant improvement detected. Counter reset.
+Epoch 32/400, Total Loss: 4.340782165527344
+current learning rate: 0.0001
+Epoch 33: train_loss=4.303566, smooth_loss=5.776986
+Significant improvement detected. Counter reset.
+Epoch 33/400, Total Loss: 4.303565502166748
+current learning rate: 0.0001
+Epoch 34: train_loss=4.284748, smooth_loss=5.627762
+Significant improvement detected. Counter reset.
+Epoch 34/400, Total Loss: 4.284748077392578
+current learning rate: 0.0001
+Epoch 35: train_loss=4.188344, smooth_loss=5.483820
+Significant improvement detected. Counter reset.
+Epoch 35/400, Total Loss: 4.188343524932861
+current learning rate: 0.0001
+Epoch 36: train_loss=4.119832, smooth_loss=5.347421
+Significant improvement detected. Counter reset.
+Epoch 36/400, Total Loss: 4.1198320388793945
+current learning rate: 0.0001
+Epoch 37: train_loss=4.078056, smooth_loss=5.220484
+Significant improvement detected. Counter reset.
+Epoch 37/400, Total Loss: 4.078056335449219
+current learning rate: 0.0001
+Epoch 38: train_loss=4.006521, smooth_loss=5.099087
+Significant improvement detected. Counter reset.
+Epoch 38/400, Total Loss: 4.006521224975586
+current learning rate: 0.0001
+Epoch 39: train_loss=3.923318, smooth_loss=4.981510
+Significant improvement detected. Counter reset.
+Epoch 39/400, Total Loss: 3.9233181476593018
+current learning rate: 0.0001
+Epoch 40: train_loss=3.856949, smooth_loss=4.869054
+Significant improvement detected. Counter reset.
+Epoch 40/400, Total Loss: 3.8569486141204834
+current learning rate: 0.0001
+Epoch 41: train_loss=3.713376, smooth_loss=4.753486
+Significant improvement detected. Counter reset.
+Epoch 41/400, Total Loss: 3.7133758068084717
+current learning rate: 0.0001
+Epoch 42: train_loss=3.785625, smooth_loss=4.656700
+Significant improvement detected. Counter reset.
+Epoch 42/400, Total Loss: 3.7856245040893555
+current learning rate: 0.0001
+Epoch 43: train_loss=3.655761, smooth_loss=4.556606
+Significant improvement detected. Counter reset.
+Epoch 43/400, Total Loss: 3.6557605266571045
+current learning rate: 0.0001
+Epoch 44: train_loss=3.679718, smooth_loss=4.468917
+Significant improvement detected. Counter reset.
+Epoch 44/400, Total Loss: 3.679718017578125
+current learning rate: 0.0001
+Epoch 45: train_loss=3.712582, smooth_loss=4.393283
+Significant improvement detected. Counter reset.
+Epoch 45/400, Total Loss: 3.7125816345214844
+current learning rate: 0.0001
+Epoch 46: train_loss=3.535112, smooth_loss=4.307466
+Significant improvement detected. Counter reset.
+Epoch 46/400, Total Loss: 3.535111904144287
+current learning rate: 0.0001
+Epoch 47: train_loss=3.450565, smooth_loss=4.221776
+Significant improvement detected. Counter reset.
+Epoch 47/400, Total Loss: 3.4505653381347656
+current learning rate: 0.0001
+Epoch 48: train_loss=3.464536, smooth_loss=4.146052
+Significant improvement detected. Counter reset.
+Epoch 48/400, Total Loss: 3.46453595161438
+current learning rate: 0.0001
+Epoch 49: train_loss=3.479733, smooth_loss=4.079420
+Significant improvement detected. Counter reset.
+Epoch 49/400, Total Loss: 3.4797329902648926
+current learning rate: 0.0001
+Epoch 50: train_loss=3.323076, smooth_loss=4.003785
+Significant improvement detected. Counter reset.
+Epoch 50/400, Total Loss: 3.3230764865875244
+current learning rate: 0.0001
+Epoch 51: train_loss=3.329007, smooth_loss=3.936307
+Significant improvement detected. Counter reset.
+Epoch 51/400, Total Loss: 3.329007387161255
+current learning rate: 0.0001
+Epoch 52: train_loss=3.312023, smooth_loss=3.873879
+Significant improvement detected. Counter reset.
+Epoch 52/400, Total Loss: 3.3120229244232178
+current learning rate: 0.0001
+Epoch 53: train_loss=3.272487, smooth_loss=3.813739
+Significant improvement detected. Counter reset.
+Epoch 53/400, Total Loss: 3.272486925125122
+current learning rate: 0.0001
+Epoch 54: train_loss=3.257779, smooth_loss=3.758143
+Significant improvement detected. Counter reset.
+Epoch 54/400, Total Loss: 3.2577786445617676
+current learning rate: 0.0001
+Epoch 55: train_loss=3.160931, smooth_loss=3.698422
+Significant improvement detected. Counter reset.
+Epoch 55/400, Total Loss: 3.16093111038208
+current learning rate: 0.0001
+Epoch 56: train_loss=3.215697, smooth_loss=3.650149
+Significant improvement detected. Counter reset.
+Epoch 56/400, Total Loss: 3.2156965732574463
+current learning rate: 0.0001
+Epoch 57: train_loss=3.075560, smooth_loss=3.592690
+Significant improvement detected. Counter reset.
+Epoch 57/400, Total Loss: 3.0755603313446045
+current learning rate: 0.0001
+Epoch 58: train_loss=3.178528, smooth_loss=3.551274
+Significant improvement detected. Counter reset.
+Epoch 58/400, Total Loss: 3.17852783203125
+current learning rate: 0.0001
+Epoch 59: train_loss=3.128951, smooth_loss=3.509041
+Significant improvement detected. Counter reset.
+Epoch 59/400, Total Loss: 3.128951072692871
+current learning rate: 0.0001
+Epoch 60: train_loss=3.010779, smooth_loss=3.459215
+Significant improvement detected. Counter reset.
+Epoch 60/400, Total Loss: 3.0107786655426025
+current learning rate: 0.0001
+Epoch 61: train_loss=3.083700, smooth_loss=3.421664
+Significant improvement detected. Counter reset.
+Epoch 61/400, Total Loss: 3.083700180053711
+current learning rate: 0.0001
+Epoch 62: train_loss=3.034909, smooth_loss=3.382988
+Significant improvement detected. Counter reset.
+Epoch 62/400, Total Loss: 3.03490948677063
+current learning rate: 0.0001
+Epoch 63: train_loss=2.965916, smooth_loss=3.341281
+Significant improvement detected. Counter reset.
+Epoch 63/400, Total Loss: 2.965916395187378
+current learning rate: 0.0001
+Epoch 64: train_loss=2.930384, smooth_loss=3.300191
+Significant improvement detected. Counter reset.
+Epoch 64/400, Total Loss: 2.930384397506714
+current learning rate: 0.0001
+Epoch 65: train_loss=2.920891, smooth_loss=3.262261
+Significant improvement detected. Counter reset.
+Epoch 65/400, Total Loss: 2.920891284942627
+current learning rate: 0.0001
+Epoch 66: train_loss=2.912637, smooth_loss=3.227299
+Significant improvement detected. Counter reset.
+Epoch 66/400, Total Loss: 2.9126369953155518
+current learning rate: 0.0001
+Epoch 67: train_loss=2.907098, smooth_loss=3.195278
+Significant improvement detected. Counter reset.
+Epoch 67/400, Total Loss: 2.9070982933044434
+current learning rate: 0.0001
+Epoch 68: train_loss=2.883264, smooth_loss=3.164077
+Significant improvement detected. Counter reset.
+Epoch 68/400, Total Loss: 2.8832638263702393
+current learning rate: 0.0001
+Epoch 69: train_loss=2.858712, smooth_loss=3.133540
+Significant improvement detected. Counter reset.
+Epoch 69/400, Total Loss: 2.8587119579315186
+current learning rate: 0.0001
+Epoch 70: train_loss=2.846941, smooth_loss=3.104881
+Significant improvement detected. Counter reset.
+Epoch 70/400, Total Loss: 2.8469409942626953
+current learning rate: 0.0001
+Epoch 71: train_loss=2.827160, smooth_loss=3.077108
+Significant improvement detected. Counter reset.
+Epoch 71/400, Total Loss: 2.8271596431732178
+current learning rate: 0.0001
+Epoch 72: train_loss=2.830384, smooth_loss=3.052436
+Significant improvement detected. Counter reset.
+Epoch 72/400, Total Loss: 2.8303840160369873
+current learning rate: 0.0001
+Epoch 73: train_loss=2.815526, smooth_loss=3.028745
+Significant improvement detected. Counter reset.
+Epoch 73/400, Total Loss: 2.815526247024536
+current learning rate: 0.0001
+Epoch 74: train_loss=2.760466, smooth_loss=3.001917
+Significant improvement detected. Counter reset.
+Epoch 74/400, Total Loss: 2.7604658603668213
+current learning rate: 0.0001
+Epoch 75: train_loss=2.762416, smooth_loss=2.977967
+Significant improvement detected. Counter reset.
+Epoch 75/400, Total Loss: 2.762415647506714
+current learning rate: 0.0001
+Epoch 76: train_loss=2.739258, smooth_loss=2.954096
+Significant improvement detected. Counter reset.
+Epoch 76/400, Total Loss: 2.7392578125
+current learning rate: 0.0001
+Epoch 77: train_loss=2.737246, smooth_loss=2.932410
+Significant improvement detected. Counter reset.
+Epoch 77/400, Total Loss: 2.737245798110962
+current learning rate: 0.0001
+Epoch 78: train_loss=2.678138, smooth_loss=2.906983
+Significant improvement detected. Counter reset.
+Epoch 78/400, Total Loss: 2.6781375408172607
+current learning rate: 0.0001
+Epoch 79: train_loss=2.717840, smooth_loss=2.888069
+Significant improvement detected. Counter reset.
+Epoch 79/400, Total Loss: 2.7178401947021484
+current learning rate: 0.0001
+Epoch 80: train_loss=2.728469, smooth_loss=2.872109
+Significant improvement detected. Counter reset.
+Epoch 80/400, Total Loss: 2.728468656539917
+current learning rate: 0.0001
+Epoch 81: train_loss=2.753022, smooth_loss=2.860200
+Significant improvement detected. Counter reset.
+Epoch 81/400, Total Loss: 2.753021717071533
+current learning rate: 0.0001
+Epoch 82: train_loss=2.640999, smooth_loss=2.838280
+Significant improvement detected. Counter reset.
+Epoch 82/400, Total Loss: 2.6409988403320312
+current learning rate: 0.0001
+Epoch 83: train_loss=2.626436, smooth_loss=2.817096
+Significant improvement detected. Counter reset.
+Epoch 83/400, Total Loss: 2.626436233520508
+current learning rate: 0.0001
+Epoch 84: train_loss=2.659967, smooth_loss=2.801383
+Significant improvement detected. Counter reset.
+Epoch 84/400, Total Loss: 2.6599671840667725
+current learning rate: 0.0001
+Epoch 85: train_loss=2.606718, smooth_loss=2.781916
+Significant improvement detected. Counter reset.
+Epoch 85/400, Total Loss: 2.606717586517334
+current learning rate: 0.0001
+Epoch 86: train_loss=2.640796, smooth_loss=2.767804
+Significant improvement detected. Counter reset.
+Epoch 86/400, Total Loss: 2.640796422958374
+current learning rate: 0.0001
+Epoch 87: train_loss=2.605305, smooth_loss=2.751554
+Significant improvement detected. Counter reset.
+Epoch 87/400, Total Loss: 2.605304718017578
+current learning rate: 0.0001
+Epoch 88: train_loss=2.567379, smooth_loss=2.733137
+Significant improvement detected. Counter reset.
+Epoch 88/400, Total Loss: 2.5673787593841553
+current learning rate: 0.0001
+Epoch 89: train_loss=2.607984, smooth_loss=2.720621
+Significant improvement detected. Counter reset.
+Epoch 89/400, Total Loss: 2.6079835891723633
+current learning rate: 0.0001
+Epoch 90: train_loss=2.534957, smooth_loss=2.702055
+Significant improvement detected. Counter reset.
+Epoch 90/400, Total Loss: 2.534956932067871
+current learning rate: 0.0001
+Epoch 91: train_loss=2.562396, smooth_loss=2.688089
+Significant improvement detected. Counter reset.
+Epoch 91/400, Total Loss: 2.5623960494995117
+current learning rate: 0.0001
+Epoch 92: train_loss=2.503788, smooth_loss=2.669659
+Significant improvement detected. Counter reset.
+Epoch 92/400, Total Loss: 2.503788471221924
+current learning rate: 0.0001
+Epoch 93: train_loss=2.484320, smooth_loss=2.651125
+Significant improvement detected. Counter reset.
+Epoch 93/400, Total Loss: 2.4843201637268066
+current learning rate: 0.0001
+Epoch 94: train_loss=2.462893, smooth_loss=2.632302
+Significant improvement detected. Counter reset.
+Epoch 94/400, Total Loss: 2.462892770767212
+current learning rate: 0.0001
+Epoch 95: train_loss=2.529218, smooth_loss=2.621993
+Significant improvement detected. Counter reset.
+Epoch 95/400, Total Loss: 2.5292179584503174
+current learning rate: 0.0001
+Epoch 96: train_loss=2.475649, smooth_loss=2.607358
+Significant improvement detected. Counter reset.
+Epoch 96/400, Total Loss: 2.475648880004883
+current learning rate: 0.0001
+Epoch 97: train_loss=2.455589, smooth_loss=2.592181
+Significant improvement detected. Counter reset.
+Epoch 97/400, Total Loss: 2.4555885791778564
+current learning rate: 0.0001
+Epoch 98: train_loss=2.494721, smooth_loss=2.582435
+Significant improvement detected. Counter reset.
+Epoch 98/400, Total Loss: 2.4947211742401123
+current learning rate: 0.0001
+Epoch 99: train_loss=2.438549, smooth_loss=2.568047
+Significant improvement detected. Counter reset.
+Epoch 99/400, Total Loss: 2.438549041748047
+current learning rate: 0.0001
+Epoch 100: train_loss=2.400709, smooth_loss=2.551313
+Significant improvement detected. Counter reset.
+Epoch 100/400, Total Loss: 2.4007086753845215
+current learning rate: 0.0001
+Epoch 101: train_loss=2.430513, smooth_loss=2.539233
+Significant improvement detected. Counter reset.
+Epoch 101/400, Total Loss: 2.430513381958008
+current learning rate: 0.0001
+Epoch 102: train_loss=2.439879, smooth_loss=2.529297
+Significant improvement detected. Counter reset.
+Epoch 102/400, Total Loss: 2.4398794174194336
+current learning rate: 0.0001
+Epoch 103: train_loss=2.406679, smooth_loss=2.517035
+Significant improvement detected. Counter reset.
+Epoch 103/400, Total Loss: 2.406679391860962
+current learning rate: 0.0001
+Epoch 104: train_loss=2.400326, smooth_loss=2.505365
+Significant improvement detected. Counter reset.
+Epoch 104/400, Total Loss: 2.4003262519836426
+current learning rate: 0.0001
+Epoch 105: train_loss=2.395993, smooth_loss=2.494427
+Significant improvement detected. Counter reset.
+Epoch 105/400, Total Loss: 2.3959929943084717
+current learning rate: 0.0001
+Epoch 106: train_loss=2.353420, smooth_loss=2.480327
+Significant improvement detected. Counter reset.
+Epoch 106/400, Total Loss: 2.3534202575683594
+current learning rate: 0.0001
+Epoch 107: train_loss=2.434726, smooth_loss=2.475766
+Significant improvement detected. Counter reset.
+Epoch 107/400, Total Loss: 2.4347259998321533
+current learning rate: 0.0001
+Epoch 108: train_loss=2.397979, smooth_loss=2.467988
+Significant improvement detected. Counter reset.
+Epoch 108/400, Total Loss: 2.3979787826538086
+current learning rate: 0.0001
+Epoch 109: train_loss=2.349070, smooth_loss=2.456096
+Significant improvement detected. Counter reset.
+Epoch 109/400, Total Loss: 2.3490703105926514
+current learning rate: 0.0001
+Epoch 110: train_loss=2.316421, smooth_loss=2.442128
+Significant improvement detected. Counter reset.
+Epoch 110/400, Total Loss: 2.316420793533325
+current learning rate: 0.0001
+Epoch 111: train_loss=2.369950, smooth_loss=2.434910
+Significant improvement detected. Counter reset.
+Epoch 111/400, Total Loss: 2.3699495792388916
+current learning rate: 0.0001
+Epoch 112: train_loss=2.404832, smooth_loss=2.431902
+Significant improvement detected. Counter reset.
+Epoch 112/400, Total Loss: 2.404831647872925
+current learning rate: 0.0001
+Epoch 113: train_loss=2.338181, smooth_loss=2.422530
+Significant improvement detected. Counter reset.
+Epoch 113/400, Total Loss: 2.3381805419921875
+current learning rate: 0.0001
+Epoch 114: train_loss=2.362589, smooth_loss=2.416536
+Significant improvement detected. Counter reset.
+Epoch 114/400, Total Loss: 2.362589120864868
+current learning rate: 0.0001
+Epoch 115: train_loss=2.348598, smooth_loss=2.409742
+Significant improvement detected. Counter reset.
+Epoch 115/400, Total Loss: 2.348597764968872
+Epoch 00116: reducing learning rate of group 0 to 1.0000e-05.
+current learning rate: 1e-05
+Epoch 116: train_loss=2.307495, smooth_loss=2.399518
+Significant improvement detected. Counter reset.
+Epoch 116/400, Total Loss: 2.307494878768921
+current learning rate: 1e-05
+Epoch 117: train_loss=2.306277, smooth_loss=2.390193
+Significant improvement detected. Counter reset.
+Epoch 117/400, Total Loss: 2.306276559829712
+current learning rate: 1e-05
+Epoch 118: train_loss=2.273528, smooth_loss=2.378527
+Significant improvement detected. Counter reset.
+Epoch 118/400, Total Loss: 2.2735276222229004
+current learning rate: 1e-05
+Epoch 119: train_loss=2.280670, smooth_loss=2.368741
+Significant improvement detected. Counter reset.
+Epoch 119/400, Total Loss: 2.280669927597046
+current learning rate: 1e-05
+Epoch 120: train_loss=2.255328, smooth_loss=2.357400
+Significant improvement detected. Counter reset.
+Epoch 120/400, Total Loss: 2.2553277015686035
+current learning rate: 1e-05
+Epoch 121: train_loss=2.339846, smooth_loss=2.355644
+Significant improvement detected. Counter reset.
+Epoch 121/400, Total Loss: 2.339845895767212
+current learning rate: 1e-05
+Epoch 122: train_loss=2.296133, smooth_loss=2.349693
+Significant improvement detected. Counter reset.
+Epoch 122/400, Total Loss: 2.296133279800415
+current learning rate: 1e-05
+Epoch 123: train_loss=2.273130, smooth_loss=2.342037
+Significant improvement detected. Counter reset.
+Epoch 123/400, Total Loss: 2.273129940032959
+Epoch 00124: reducing learning rate of group 0 to 1.0000e-06.
+current learning rate: 1.0000000000000002e-06
+Epoch 124: train_loss=2.308364, smooth_loss=2.338669
+Significant improvement detected. Counter reset.
+Epoch 124/400, Total Loss: 2.308363676071167
+current learning rate: 1.0000000000000002e-06
+Epoch 125: train_loss=2.276318, smooth_loss=2.332434
+Significant improvement detected. Counter reset.
+Epoch 125/400, Total Loss: 2.276318073272705
+current learning rate: 1.0000000000000002e-06
+Epoch 126: train_loss=2.251744, smooth_loss=2.324365
+Significant improvement detected. Counter reset.
+Epoch 126/400, Total Loss: 2.251743793487549
+current learning rate: 1.0000000000000002e-06
+Epoch 127: train_loss=2.235583, smooth_loss=2.315487
+Significant improvement detected. Counter reset.
+Epoch 127/400, Total Loss: 2.2355828285217285
+current learning rate: 1.0000000000000002e-06
+Epoch 128: train_loss=2.319395, smooth_loss=2.315877
+No significant improvement. Counter: 1/10
+Epoch 128/400, Total Loss: 2.319395065307617
+current learning rate: 1.0000000000000002e-06
+Epoch 129: train_loss=2.249077, smooth_loss=2.309197
+Significant improvement detected. Counter reset.
+Epoch 129/400, Total Loss: 2.2490768432617188
+current learning rate: 1.0000000000000002e-06
+Epoch 130: train_loss=2.270632, smooth_loss=2.305341
+Significant improvement detected. Counter reset.
+Epoch 130/400, Total Loss: 2.2706315517425537
+current learning rate: 1.0000000000000002e-06
+Epoch 131: train_loss=2.292194, smooth_loss=2.304026
+Significant improvement detected. Counter reset.
+Epoch 131/400, Total Loss: 2.292194366455078
+current learning rate: 1.0000000000000002e-06
+Epoch 132: train_loss=2.263954, smooth_loss=2.300019
+Significant improvement detected. Counter reset.
+Epoch 132/400, Total Loss: 2.2639541625976562
+Epoch 00133: reducing learning rate of group 0 to 1.0000e-07.
+current learning rate: 1.0000000000000002e-07
+Epoch 133: train_loss=2.338779, smooth_loss=2.303895
+Significant improvement detected. Counter reset.
+Epoch 133/400, Total Loss: 2.3387787342071533
+current learning rate: 1.0000000000000002e-07
+Epoch 134: train_loss=2.221533, smooth_loss=2.295658
+Significant improvement detected. Counter reset.
+Epoch 134/400, Total Loss: 2.2215332984924316
+current learning rate: 1.0000000000000002e-07
+Epoch 135: train_loss=2.303862, smooth_loss=2.296479
+No significant improvement. Counter: 1/10
+Epoch 135/400, Total Loss: 2.3038620948791504
+current learning rate: 1.0000000000000002e-07
+Epoch 136: train_loss=2.251554, smooth_loss=2.291986
+Significant improvement detected. Counter reset.
+Epoch 136/400, Total Loss: 2.251554489135742
+current learning rate: 1.0000000000000002e-07
+Epoch 137: train_loss=2.288556, smooth_loss=2.291643
+No significant improvement. Counter: 1/10
+Epoch 137/400, Total Loss: 2.28855562210083
+current learning rate: 1.0000000000000002e-07
+Epoch 138: train_loss=2.269128, smooth_loss=2.289392
+Significant improvement detected. Counter reset.
+Epoch 138/400, Total Loss: 2.269127607345581
+Epoch 00139: reducing learning rate of group 0 to 1.0000e-08.
+current learning rate: 1.0000000000000004e-08
+Epoch 139: train_loss=2.275457, smooth_loss=2.287998
+Significant improvement detected. Counter reset.
+Epoch 139/400, Total Loss: 2.275456666946411
+current learning rate: 1.0000000000000004e-08
+Epoch 140: train_loss=2.286578, smooth_loss=2.287856
+No significant improvement. Counter: 1/10
+Epoch 140/400, Total Loss: 2.286578416824341
+current learning rate: 1.0000000000000004e-08
+Epoch 141: train_loss=2.285634, smooth_loss=2.287634
+No significant improvement. Counter: 2/10
+Epoch 141/400, Total Loss: 2.2856342792510986
+current learning rate: 1.0000000000000004e-08
+Epoch 142: train_loss=2.235343, smooth_loss=2.282405
+Significant improvement detected. Counter reset.
+Epoch 142/400, Total Loss: 2.235342502593994
+current learning rate: 1.0000000000000004e-08
+Epoch 143: train_loss=2.259660, smooth_loss=2.280130
+Significant improvement detected. Counter reset.
+Epoch 143/400, Total Loss: 2.259660243988037
+current learning rate: 1.0000000000000004e-08
+Epoch 144: train_loss=2.287921, smooth_loss=2.280910
+No significant improvement. Counter: 1/10
+Epoch 144/400, Total Loss: 2.2879207134246826
+Epoch 00145: reducing learning rate of group 0 to 1.0000e-09.
+current learning rate: 1.0000000000000005e-09
+Epoch 145: train_loss=2.255126, smooth_loss=2.278331
+Significant improvement detected. Counter reset.
+Epoch 145/400, Total Loss: 2.2551259994506836
+current learning rate: 1.0000000000000005e-09
+Epoch 146: train_loss=2.278304, smooth_loss=2.278328
+No significant improvement. Counter: 1/10
+Epoch 146/400, Total Loss: 2.2783043384552
+current learning rate: 1.0000000000000005e-09
+Epoch 147: train_loss=2.236683, smooth_loss=2.274164
+Significant improvement detected. Counter reset.
+Epoch 147/400, Total Loss: 2.2366833686828613
+current learning rate: 1.0000000000000005e-09
+Epoch 148: train_loss=2.250884, smooth_loss=2.271836
+Significant improvement detected. Counter reset.
+Epoch 148/400, Total Loss: 2.2508842945098877
+current learning rate: 1.0000000000000005e-09
+Epoch 149: train_loss=2.240108, smooth_loss=2.268663
+Significant improvement detected. Counter reset.
+Epoch 149/400, Total Loss: 2.240107774734497
+current learning rate: 1.0000000000000005e-09
+Epoch 150: train_loss=2.291761, smooth_loss=2.270972
+Significant improvement detected. Counter reset.
+Epoch 150/400, Total Loss: 2.2917613983154297
+Epoch 00151: reducing learning rate of group 0 to 1.0000e-10.
+current learning rate: 1.0000000000000006e-10
+Epoch 151: train_loss=2.262799, smooth_loss=2.270155
+No significant improvement. Counter: 1/10
+Epoch 151/400, Total Loss: 2.26279878616333
+current learning rate: 1.0000000000000006e-10
+Epoch 152: train_loss=2.288036, smooth_loss=2.271943
+Significant improvement detected. Counter reset.
+Epoch 152/400, Total Loss: 2.288036346435547
+current learning rate: 1.0000000000000006e-10
+Epoch 153: train_loss=2.236456, smooth_loss=2.268395
+Significant improvement detected. Counter reset.
+Epoch 153/400, Total Loss: 2.2364563941955566
+current learning rate: 1.0000000000000006e-10
+Epoch 154: train_loss=2.253264, smooth_loss=2.266882
+Significant improvement detected. Counter reset.
+Epoch 154/400, Total Loss: 2.2532644271850586
+current learning rate: 1.0000000000000006e-10
+Epoch 155: train_loss=2.307731, smooth_loss=2.270967
+Significant improvement detected. Counter reset.
+Epoch 155/400, Total Loss: 2.3077313899993896
+current learning rate: 1.0000000000000006e-10
+Epoch 156: train_loss=2.232554, smooth_loss=2.267125
+Significant improvement detected. Counter reset.
+Epoch 156/400, Total Loss: 2.2325539588928223
+current learning rate: 1.0000000000000006e-10
+Epoch 157: train_loss=2.244928, smooth_loss=2.264905
+Significant improvement detected. Counter reset.
+Epoch 157/400, Total Loss: 2.2449276447296143
+current learning rate: 1.0000000000000006e-10
+Epoch 158: train_loss=2.243042, smooth_loss=2.262719
+Significant improvement detected. Counter reset.
+Epoch 158/400, Total Loss: 2.2430419921875
+current learning rate: 1.0000000000000006e-10
+Epoch 159: train_loss=2.286532, smooth_loss=2.265100
+Significant improvement detected. Counter reset.
+Epoch 159/400, Total Loss: 2.286531925201416
+current learning rate: 1.0000000000000006e-10
+Epoch 160: train_loss=2.303623, smooth_loss=2.268953
+Significant improvement detected. Counter reset.
+Epoch 160/400, Total Loss: 2.3036234378814697
+current learning rate: 1.0000000000000006e-10
+Epoch 161: train_loss=2.245656, smooth_loss=2.266623
+Significant improvement detected. Counter reset.
+Epoch 161/400, Total Loss: 2.2456555366516113
+current learning rate: 1.0000000000000006e-10
+Epoch 162: train_loss=2.262309, smooth_loss=2.266191
+No significant improvement. Counter: 1/10
+Epoch 162/400, Total Loss: 2.2623085975646973
+current learning rate: 1.0000000000000006e-10
+Epoch 163: train_loss=2.255015, smooth_loss=2.265074
+Significant improvement detected. Counter reset.
+Epoch 163/400, Total Loss: 2.2550148963928223
+current learning rate: 1.0000000000000006e-10
+Epoch 164: train_loss=2.254752, smooth_loss=2.264042
+Significant improvement detected. Counter reset.
+Epoch 164/400, Total Loss: 2.2547523975372314
+current learning rate: 1.0000000000000006e-10
+Epoch 165: train_loss=2.333620, smooth_loss=2.270999
+Significant improvement detected. Counter reset.
+Epoch 165/400, Total Loss: 2.333620071411133
+current learning rate: 1.0000000000000006e-10
+Epoch 166: train_loss=2.344090, smooth_loss=2.278309
+Significant improvement detected. Counter reset.
+Epoch 166/400, Total Loss: 2.344090223312378
+current learning rate: 1.0000000000000006e-10
+Epoch 167: train_loss=2.266188, smooth_loss=2.277097
+Significant improvement detected. Counter reset.
+Epoch 167/400, Total Loss: 2.266188383102417
+current learning rate: 1.0000000000000006e-10
+Epoch 168: train_loss=2.262622, smooth_loss=2.275649
+Significant improvement detected. Counter reset.
+Epoch 168/400, Total Loss: 2.2626216411590576
+current learning rate: 1.0000000000000006e-10
+Epoch 169: train_loss=2.232145, smooth_loss=2.271298
+Significant improvement detected. Counter reset.
+Epoch 169/400, Total Loss: 2.232144594192505
+current learning rate: 1.0000000000000006e-10
+Epoch 170: train_loss=2.244238, smooth_loss=2.268592
+Significant improvement detected. Counter reset.
+Epoch 170/400, Total Loss: 2.2442378997802734
+current learning rate: 1.0000000000000006e-10
+Epoch 171: train_loss=2.398701, smooth_loss=2.281603
+Significant improvement detected. Counter reset.
+Epoch 171/400, Total Loss: 2.3987009525299072
+current learning rate: 1.0000000000000006e-10
+Epoch 172: train_loss=2.256475, smooth_loss=2.279090
+Significant improvement detected. Counter reset.
+Epoch 172/400, Total Loss: 2.256474733352661
+current learning rate: 1.0000000000000006e-10
+Epoch 173: train_loss=2.280667, smooth_loss=2.279248
+No significant improvement. Counter: 1/10
+Epoch 173/400, Total Loss: 2.2806668281555176
+current learning rate: 1.0000000000000006e-10
+Epoch 174: train_loss=2.237317, smooth_loss=2.275054
+Significant improvement detected. Counter reset.
+Epoch 174/400, Total Loss: 2.237316608428955
+current learning rate: 1.0000000000000006e-10
+Epoch 175: train_loss=2.400651, smooth_loss=2.287614
+Significant improvement detected. Counter reset.
+Epoch 175/400, Total Loss: 2.4006505012512207
+current learning rate: 1.0000000000000006e-10
+Epoch 176: train_loss=2.280904, smooth_loss=2.286943
+No significant improvement. Counter: 1/10
+Epoch 176/400, Total Loss: 2.2809042930603027
+current learning rate: 1.0000000000000006e-10
+Epoch 177: train_loss=2.272782, smooth_loss=2.285527
+Significant improvement detected. Counter reset.
+Epoch 177/400, Total Loss: 2.2727818489074707
+current learning rate: 1.0000000000000006e-10
+Epoch 178: train_loss=2.304655, smooth_loss=2.287440
+Significant improvement detected. Counter reset.
+Epoch 178/400, Total Loss: 2.304655075073242
+current learning rate: 1.0000000000000006e-10
+Epoch 179: train_loss=2.238202, smooth_loss=2.282516
+Significant improvement detected. Counter reset.
+Epoch 179/400, Total Loss: 2.2382023334503174
+current learning rate: 1.0000000000000006e-10
+Epoch 180: train_loss=2.274902, smooth_loss=2.281754
+No significant improvement. Counter: 1/10
+Epoch 180/400, Total Loss: 2.27490234375
+current learning rate: 1.0000000000000006e-10
+Epoch 181: train_loss=2.259943, smooth_loss=2.279573
+Significant improvement detected. Counter reset.
+Epoch 181/400, Total Loss: 2.2599430084228516
+current learning rate: 1.0000000000000006e-10
+Epoch 182: train_loss=2.256830, smooth_loss=2.277299
+Significant improvement detected. Counter reset.
+Epoch 182/400, Total Loss: 2.2568297386169434
+current learning rate: 1.0000000000000006e-10
+Epoch 183: train_loss=2.298565, smooth_loss=2.279425
+Significant improvement detected. Counter reset.
+Epoch 183/400, Total Loss: 2.298565149307251
+current learning rate: 1.0000000000000006e-10
+Epoch 184: train_loss=2.252984, smooth_loss=2.276781
+Significant improvement detected. Counter reset.
+Epoch 184/400, Total Loss: 2.2529842853546143
+current learning rate: 1.0000000000000006e-10
+Epoch 185: train_loss=2.378855, smooth_loss=2.286988
+Significant improvement detected. Counter reset.
+Epoch 185/400, Total Loss: 2.3788554668426514
+current learning rate: 1.0000000000000006e-10
+Epoch 186: train_loss=2.266376, smooth_loss=2.284927
+Significant improvement detected. Counter reset.
+Epoch 186/400, Total Loss: 2.266376495361328
+current learning rate: 1.0000000000000006e-10
+Epoch 187: train_loss=2.235814, smooth_loss=2.280016
+Significant improvement detected. Counter reset.
+Epoch 187/400, Total Loss: 2.235813617706299
+current learning rate: 1.0000000000000006e-10
+Epoch 188: train_loss=2.294299, smooth_loss=2.281444
+Significant improvement detected. Counter reset.
+Epoch 188/400, Total Loss: 2.2942986488342285
+current learning rate: 1.0000000000000006e-10
+Epoch 189: train_loss=2.284279, smooth_loss=2.281728
+No significant improvement. Counter: 1/10
+Epoch 189/400, Total Loss: 2.2842788696289062
+current learning rate: 1.0000000000000006e-10
+Epoch 190: train_loss=2.263659, smooth_loss=2.279921
+Significant improvement detected. Counter reset.
+Epoch 190/400, Total Loss: 2.2636590003967285
+current learning rate: 1.0000000000000006e-10
+Epoch 191: train_loss=2.255723, smooth_loss=2.277501
+Significant improvement detected. Counter reset.
+Epoch 191/400, Total Loss: 2.255723476409912
+current learning rate: 1.0000000000000006e-10
+Epoch 192: train_loss=2.317896, smooth_loss=2.281540
+Significant improvement detected. Counter reset.
+Epoch 192/400, Total Loss: 2.3178963661193848
+current learning rate: 1.0000000000000006e-10
+Epoch 193: train_loss=2.275734, smooth_loss=2.280960
+No significant improvement. Counter: 1/10
+Epoch 193/400, Total Loss: 2.275733709335327
+current learning rate: 1.0000000000000006e-10
+Epoch 194: train_loss=2.309307, smooth_loss=2.283794
+Significant improvement detected. Counter reset.
+Epoch 194/400, Total Loss: 2.3093068599700928
+current learning rate: 1.0000000000000006e-10
+Epoch 195: train_loss=2.302990, smooth_loss=2.285714
+Significant improvement detected. Counter reset.
+Epoch 195/400, Total Loss: 2.302990436553955
+current learning rate: 1.0000000000000006e-10
+Epoch 196: train_loss=2.259204, smooth_loss=2.283063
+Significant improvement detected. Counter reset.
+Epoch 196/400, Total Loss: 2.259204149246216
+current learning rate: 1.0000000000000006e-10
+Epoch 197: train_loss=2.263279, smooth_loss=2.281085
+Significant improvement detected. Counter reset.
+Epoch 197/400, Total Loss: 2.2632789611816406
+current learning rate: 1.0000000000000006e-10
+Epoch 198: train_loss=2.240739, smooth_loss=2.277050
+Significant improvement detected. Counter reset.
+Epoch 198/400, Total Loss: 2.240739345550537
+current learning rate: 1.0000000000000006e-10
+Epoch 199: train_loss=2.292539, smooth_loss=2.278599
+Significant improvement detected. Counter reset.
+Epoch 199/400, Total Loss: 2.29253888130188
+current learning rate: 1.0000000000000006e-10
+Epoch 200: train_loss=2.326824, smooth_loss=2.283421
+Significant improvement detected. Counter reset.
+Epoch 1: train_loss=5.181789, smooth_loss=5.181789
+num_class [0 1 2 3 4 5 6] num_datapoint [  56 1457  242 1668 1832  221  628]
+acc: 0.5520969855832241 nmi: 0.4906224561398084 kappa 0.44344294576302634
+current learning rate: 1e-05
+Epoch 2: train_loss=4.720826, smooth_loss=5.135693
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 3: train_loss=4.482797, smooth_loss=5.070404
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 4: train_loss=4.390264, smooth_loss=5.002389
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 5: train_loss=4.354064, smooth_loss=4.937557
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 6: train_loss=4.332152, smooth_loss=4.877016
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 7: train_loss=4.314074, smooth_loss=4.820722
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 8: train_loss=4.306555, smooth_loss=4.769305
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 9: train_loss=4.298110, smooth_loss=4.722185
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 10: train_loss=4.291320, smooth_loss=4.679099
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 11: train_loss=4.284325, smooth_loss=4.639621
+Significant improvement detected. Counter reset.
+num_class [0 1 2 3 4 5 6] num_datapoint [  19 1342    3  581 1558  422 2179]
+acc: 0.8150393184796855 nmi: 0.8028759874242009 kappa 0.7632502137868211
+current learning rate: 1e-05
+Epoch 12: train_loss=4.280112, smooth_loss=4.603670
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 13: train_loss=4.271607, smooth_loss=4.570464
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 14: train_loss=4.268953, smooth_loss=4.540312
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 15: train_loss=4.262610, smooth_loss=4.512542
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 16: train_loss=4.264246, smooth_loss=4.487712
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 17: train_loss=4.255715, smooth_loss=4.464512
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 18: train_loss=4.253170, smooth_loss=4.443377
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 19: train_loss=4.248457, smooth_loss=4.423885
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 20: train_loss=4.252414, smooth_loss=4.406738
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 21: train_loss=4.246594, smooth_loss=4.390724
+Significant improvement detected. Counter reset.
+num_class [0 1 2 3 4 5 6] num_datapoint [  47 1342    1  590 1483  487 2154]
+acc: 0.8253604193971167 nmi: 0.8127588068817945 kappa 0.7769102531680984
+current learning rate: 1e-05
+Epoch 22: train_loss=4.243542, smooth_loss=4.376006
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 23: train_loss=4.246109, smooth_loss=4.363016
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 24: train_loss=4.244676, smooth_loss=4.351182
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 25: train_loss=4.242345, smooth_loss=4.340298
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 26: train_loss=4.240644, smooth_loss=4.330333
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 27: train_loss=4.237585, smooth_loss=4.321058
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 28: train_loss=4.233624, smooth_loss=4.312315
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 29: train_loss=4.231481, smooth_loss=4.304231
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 30: train_loss=4.234787, smooth_loss=4.297287
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 31: train_loss=4.230061, smooth_loss=4.290564
+Significant improvement detected. Counter reset.
+num_class [0 1 2 3 4 5 6] num_datapoint [ 107 1342    2  579 1443  466 2165]
+acc: 0.8310943643512451 nmi: 0.8096029041994044 kappa 0.7842075519593638
+current learning rate: 1e-05
+Epoch 32: train_loss=4.229652, smooth_loss=4.284472
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 33: train_loss=4.229398, smooth_loss=4.278965
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 34: train_loss=4.223484, smooth_loss=4.273417
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 35: train_loss=4.221498, smooth_loss=4.268225
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 36: train_loss=4.224721, smooth_loss=4.263875
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 37: train_loss=4.223991, smooth_loss=4.259886
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 38: train_loss=4.223804, smooth_loss=4.256278
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 39: train_loss=4.217142, smooth_loss=4.252364
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 40: train_loss=4.219982, smooth_loss=4.249126
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 41: train_loss=4.219795, smooth_loss=4.246193
+Significant improvement detected. Counter reset.
+num_class [0 1 2 3 4 5 6] num_datapoint [ 376 1342    2  581 1432  195 2176]
+acc: 0.836173001310616 nmi: 0.8094051588292165 kappa 0.7911009769075203
+current learning rate: 1e-05
+Epoch 42: train_loss=4.213972, smooth_loss=4.242970
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 43: train_loss=4.213884, smooth_loss=4.240062
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 44: train_loss=4.211438, smooth_loss=4.237199
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 45: train_loss=4.208333, smooth_loss=4.234313
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 46: train_loss=4.208789, smooth_loss=4.231760
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 47: train_loss=4.205158, smooth_loss=4.229100
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 48: train_loss=4.203679, smooth_loss=4.226558
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 49: train_loss=4.201830, smooth_loss=4.224085
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 50: train_loss=4.201280, smooth_loss=4.221804
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 51: train_loss=4.202067, smooth_loss=4.219831
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 718 1342  586 1186   97 2175]
+acc: 0.8576343381389253 nmi: 0.8296526241219936 kappa 0.8189805443473908
+current learning rate: 1e-05
+Epoch 52: train_loss=4.198688, smooth_loss=4.217716
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 53: train_loss=4.198836, smooth_loss=4.215828
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 54: train_loss=4.195580, smooth_loss=4.213803
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 55: train_loss=4.197257, smooth_loss=4.212149
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 56: train_loss=4.191784, smooth_loss=4.210112
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 57: train_loss=4.196011, smooth_loss=4.208702
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 58: train_loss=4.194394, smooth_loss=4.207271
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 59: train_loss=4.193914, smooth_loss=4.205935
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 60: train_loss=4.192771, smooth_loss=4.204619
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 61: train_loss=4.190858, smooth_loss=4.203243
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 676 1342  587 1226   96 2177]
+acc: 0.8581258191349934 nmi: 0.8294541080897653 kappa 0.8194708846536741
+current learning rate: 1e-05
+Epoch 62: train_loss=4.193079, smooth_loss=4.202226
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 63: train_loss=4.196854, smooth_loss=4.201689
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 64: train_loss=4.197296, smooth_loss=4.201250
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 65: train_loss=4.190876, smooth_loss=4.200212
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 66: train_loss=4.191350, smooth_loss=4.199326
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 67: train_loss=4.191667, smooth_loss=4.198560
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 68: train_loss=4.190142, smooth_loss=4.197719
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 69: train_loss=4.189677, smooth_loss=4.196914
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 70: train_loss=4.190836, smooth_loss=4.196306
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 71: train_loss=4.189546, smooth_loss=4.195630
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 741 1342  587 1166   96 2172]
+acc: 0.8594364351245085 nmi: 0.8320971568533929 kappa 0.8213518261421277
+current learning rate: 1e-05
+Epoch 72: train_loss=4.188512, smooth_loss=4.194918
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 73: train_loss=4.192125, smooth_loss=4.194639
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 74: train_loss=4.188569, smooth_loss=4.194032
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 75: train_loss=4.192864, smooth_loss=4.193915
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 76: train_loss=4.189770, smooth_loss=4.193501
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 77: train_loss=4.189544, smooth_loss=4.193105
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 78: train_loss=4.192671, smooth_loss=4.193061
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 79: train_loss=4.190091, smooth_loss=4.192764
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 80: train_loss=4.187982, smooth_loss=4.192286
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 81: train_loss=4.190839, smooth_loss=4.192141
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 827 1342  589 1075   96 2175]
+acc: 0.8648427260812582 nmi: 0.8413950835757663 kappa 0.8277263549564388
+current learning rate: 1e-05
+Epoch 82: train_loss=4.187260, smooth_loss=4.191653
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 83: train_loss=4.188026, smooth_loss=4.191290
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 84: train_loss=4.186520, smooth_loss=4.190813
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 85: train_loss=4.187966, smooth_loss=4.190528
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 86: train_loss=4.188046, smooth_loss=4.190279
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 87: train_loss=4.191181, smooth_loss=4.190370
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 88: train_loss=4.187384, smooth_loss=4.190071
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 89: train_loss=4.189940, smooth_loss=4.190058
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 90: train_loss=4.187806, smooth_loss=4.189833
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 91: train_loss=4.185367, smooth_loss=4.189386
+Significant improvement detected. Counter reset.
+num_class [0 1 2 3 4 5 6] num_datapoint [ 751 1341    1  587 1155   96 2173]
+acc: 0.859600262123198 nmi: 0.8324338987444754 kappa 0.8215852609225279
+current learning rate: 1e-05
+Epoch 92: train_loss=4.186410, smooth_loss=4.189088
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 93: train_loss=4.186970, smooth_loss=4.188877
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 94: train_loss=4.190590, smooth_loss=4.189048
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 95: train_loss=4.187059, smooth_loss=4.188849
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 96: train_loss=4.187928, smooth_loss=4.188757
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 97: train_loss=4.188166, smooth_loss=4.188698
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 98: train_loss=4.187351, smooth_loss=4.188563
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 99: train_loss=4.189336, smooth_loss=4.188640
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 100: train_loss=4.190091, smooth_loss=4.188785
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 101: train_loss=4.187145, smooth_loss=4.188621
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 872 1342  589 1028   96 2177]
+acc: 0.8710681520314548 nmi: 0.8480475535744807 kappa 0.8357257019374926
+current learning rate: 1e-05
+Epoch 102: train_loss=4.188916, smooth_loss=4.188651
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 103: train_loss=4.187522, smooth_loss=4.188538
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 104: train_loss=4.189293, smooth_loss=4.188613
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 105: train_loss=4.184574, smooth_loss=4.188209
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 106: train_loss=4.185726, smooth_loss=4.187961
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 107: train_loss=4.182845, smooth_loss=4.187449
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 108: train_loss=4.185357, smooth_loss=4.187240
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 109: train_loss=4.184380, smooth_loss=4.186954
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 110: train_loss=4.188468, smooth_loss=4.187105
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 111: train_loss=4.187711, smooth_loss=4.187165
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 712 1342  592 1192   96 2170]
+acc: 0.8597640891218873 nmi: 0.8312240654141149 kappa 0.8217048216595741
+current learning rate: 1e-05
+Epoch 112: train_loss=4.185344, smooth_loss=4.186983
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 113: train_loss=4.189362, smooth_loss=4.187221
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 114: train_loss=4.185570, smooth_loss=4.187056
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 115: train_loss=4.191432, smooth_loss=4.187493
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 116: train_loss=4.184847, smooth_loss=4.187229
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 117: train_loss=4.185433, smooth_loss=4.187049
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 118: train_loss=4.183568, smooth_loss=4.186701
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 119: train_loss=4.184969, smooth_loss=4.186528
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 120: train_loss=4.184384, smooth_loss=4.186314
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 121: train_loss=4.184993, smooth_loss=4.186182
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 782 1342  589 1126   96 2169]
+acc: 0.859600262123198 nmi: 0.8337465533738214 kappa 0.821693886400754
+current learning rate: 1e-05
+Epoch 122: train_loss=4.183572, smooth_loss=4.185921
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 123: train_loss=4.186044, smooth_loss=4.185933
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 124: train_loss=4.185050, smooth_loss=4.185844
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 125: train_loss=4.183851, smooth_loss=4.185645
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 126: train_loss=4.185073, smooth_loss=4.185588
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 127: train_loss=4.183270, smooth_loss=4.185356
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 128: train_loss=4.182322, smooth_loss=4.185052
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 129: train_loss=4.181845, smooth_loss=4.184731
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 130: train_loss=4.183914, smooth_loss=4.184649
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 131: train_loss=4.182887, smooth_loss=4.184473
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 748 1342  587 1154   96 2177]
+acc: 0.8592726081258191 nmi: 0.8330828093480003 kappa 0.821128052576727
+current learning rate: 1e-05
+Epoch 132: train_loss=4.184170, smooth_loss=4.184443
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 133: train_loss=4.186026, smooth_loss=4.184601
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 134: train_loss=4.185806, smooth_loss=4.184721
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 135: train_loss=4.183564, smooth_loss=4.184606
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 136: train_loss=4.184993, smooth_loss=4.184644
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 137: train_loss=4.182665, smooth_loss=4.184446
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 138: train_loss=4.190789, smooth_loss=4.185081
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 139: train_loss=4.183176, smooth_loss=4.184890
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 140: train_loss=4.187619, smooth_loss=4.185163
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 141: train_loss=4.180336, smooth_loss=4.184680
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 704 1342  583 1201   96 2178]
+acc: 0.8574705111402359 nmi: 0.8284279572636479 kappa 0.8187063026946002
+current learning rate: 1e-05
+Epoch 142: train_loss=4.183003, smooth_loss=4.184512
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 143: train_loss=4.182473, smooth_loss=4.184308
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 144: train_loss=4.187024, smooth_loss=4.184580
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 145: train_loss=4.186494, smooth_loss=4.184771
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 146: train_loss=4.181757, smooth_loss=4.184470
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 147: train_loss=4.183418, smooth_loss=4.184364
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 148: train_loss=4.183347, smooth_loss=4.184262
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 149: train_loss=4.186712, smooth_loss=4.184507
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 150: train_loss=4.183609, smooth_loss=4.184418
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 151: train_loss=4.185489, smooth_loss=4.184525
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 762 1342  588 1138   96 2178]
+acc: 0.8602555701179555 nmi: 0.8352401965890766 kappa 0.822409122297814
+current learning rate: 1e-05
+Epoch 152: train_loss=4.185256, smooth_loss=4.184598
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 153: train_loss=4.184370, smooth_loss=4.184575
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 154: train_loss=4.184120, smooth_loss=4.184530
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 155: train_loss=4.179287, smooth_loss=4.184006
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 156: train_loss=4.181454, smooth_loss=4.183750
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 157: train_loss=4.182837, smooth_loss=4.183659
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 158: train_loss=4.184739, smooth_loss=4.183767
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 159: train_loss=4.185001, smooth_loss=4.183890
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 160: train_loss=4.182276, smooth_loss=4.183729
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 161: train_loss=4.184628, smooth_loss=4.183819
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 695 1342  592 1205   96 2174]
+acc: 0.8589449541284404 nmi: 0.8306107404550706 kappa 0.820588626871847
+current learning rate: 1e-05
+Epoch 162: train_loss=4.180155, smooth_loss=4.183453
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 163: train_loss=4.185020, smooth_loss=4.183609
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 164: train_loss=4.177565, smooth_loss=4.183004
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 165: train_loss=4.183857, smooth_loss=4.183089
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 166: train_loss=4.181736, smooth_loss=4.182954
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 167: train_loss=4.179487, smooth_loss=4.182607
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 168: train_loss=4.183032, smooth_loss=4.182650
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 169: train_loss=4.180947, smooth_loss=4.182479
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 170: train_loss=4.180974, smooth_loss=4.182329
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 171: train_loss=4.180954, smooth_loss=4.182191
+Significant improvement detected. Counter reset.
+num_class [0 1 3 4 5 6] num_datapoint [ 725 1342  584 1174   96 2183]
+acc: 0.8582896461336829 nmi: 0.8313399285395507 kappa 0.8197717118362685
+current learning rate: 1e-05
+Epoch 172: train_loss=4.181844, smooth_loss=4.182156
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 173: train_loss=4.179193, smooth_loss=4.181859
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 174: train_loss=4.181241, smooth_loss=4.181798
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 175: train_loss=4.182371, smooth_loss=4.181855
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 176: train_loss=4.185197, smooth_loss=4.182189
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 177: train_loss=4.183131, smooth_loss=4.182283
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 178: train_loss=4.181985, smooth_loss=4.182253
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 179: train_loss=4.180110, smooth_loss=4.182038
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 180: train_loss=4.181374, smooth_loss=4.181972
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 181: train_loss=4.182860, smooth_loss=4.182061
+Significant improvement detected. Counter reset.
+num_class [0 1 2 3 4 5 6] num_datapoint [ 673 1342   45  590 1182   96 2176]
+acc: 0.8556684141546527 nmi: 0.8262160408599412 kappa 0.8164299449841881
+current learning rate: 1e-05
+Epoch 182: train_loss=4.181036, smooth_loss=4.181958
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 183: train_loss=4.182908, smooth_loss=4.182053
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 184: train_loss=4.181851, smooth_loss=4.182033
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 185: train_loss=4.179914, smooth_loss=4.181820
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 186: train_loss=4.178675, smooth_loss=4.181506
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 187: train_loss=4.179795, smooth_loss=4.181334
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 188: train_loss=4.180345, smooth_loss=4.181235
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 189: train_loss=4.182331, smooth_loss=4.181345
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 190: train_loss=4.176114, smooth_loss=4.180821
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 191: train_loss=4.180307, smooth_loss=4.180770
+Significant improvement detected. Counter reset.
+num_class [0 1 2 3 4 5 6] num_datapoint [ 628 1342   50  588 1225   96 2175]
+acc: 0.8551769331585846 nmi: 0.8222142571360981 kappa 0.8156933571081249
+current learning rate: 1e-05
+Epoch 192: train_loss=4.183320, smooth_loss=4.181025
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 193: train_loss=4.183718, smooth_loss=4.181294
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 194: train_loss=4.175167, smooth_loss=4.180682
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 195: train_loss=4.180979, smooth_loss=4.180711
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 196: train_loss=4.177824, smooth_loss=4.180422
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 197: train_loss=4.179398, smooth_loss=4.180320
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 198: train_loss=4.178252, smooth_loss=4.180113
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 199: train_loss=4.177128, smooth_loss=4.179814
+Significant improvement detected. Counter reset.
+current learning rate: 1e-05
+Epoch 200: train_loss=4.176184, smooth_loss=4.179451
+Significant improvement detected. Counter reset.
+num_class [0 1 2 3 4 5 6] num_datapoint [ 606 1342  140  587 1163   96 2170]
+acc: 0.8574705111402359 nmi: 0.8171968779277157 kappa 0.818755752960823
+current learning rate: 1e-05
+clustering_result: acc: 0.8574705111402359 nmi: 0.8171968779277157 kappa: 0.818755752960823 ca [1.         1.         0.11469534 0.998003   0.73846154 0.68523002
+ 0.73836478]
+Elapsed time: 99.30541253089905
