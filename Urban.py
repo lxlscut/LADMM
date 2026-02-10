@@ -21,18 +21,17 @@ def setup_seed(seed):
 
 # [7270  860 5390 5191 5734 6265  466 4426 5578 8322]
 
-setup_seed(8322)
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Scalable ADMM',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('--seed', type=int, default=8322, help='Random seed')
     parser.add_argument('--lr', type=float, default=1e-5, help='learning rate stage 2')
     parser.add_argument('--n_input', type=int, default=162)
     parser.add_argument("--n_tz", type=int, default=64)
     parser.add_argument("--n_sz", type=int, default=8)
     parser.add_argument("--patch_size", type=int, default=7)
-    parser.add_argument("--rho", type=float, default=3.0, help="convergence part")
+    parser.add_argument("--rho", type=float, default=2.0, help="convergence part")
     parser.add_argument("--num_layer", type=int, default=5)
     parser.add_argument("--alpha", type=float, default=10.0, help="self-representation")
     parser.add_argument("--beta", type=float, default=1.0, help="sparsity")
@@ -46,6 +45,7 @@ if __name__ == '__main__':
     parser.add_argument("--dataset", type=str, default="Urban")
 
     args = parser.parse_args()
+    setup_seed(args.seed)
     print(datetime.now())
 
     device = torch.device(args.device)  # Use GPU

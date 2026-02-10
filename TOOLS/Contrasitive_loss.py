@@ -133,8 +133,8 @@ class Contrasitive_loss():
 
 
         # ablation study
-        # Cp = sim>0.7
-        # Cn = sim<0.6
+        Cp = sim>0.7
+        Cn = sim<0.6
 
 
         Cp.fill_diagonal_(False)

@@ -3,7 +3,7 @@ import re
 import numpy as np
 
 # define the directory that stores results
-output_dir = 'result/Urban_cos'
+output_dir = 'result/urban_2025_lamda_sweep_rhofix/lamda_0p10'
 
 # containers for acc, nmi, kappa, ca, and runtime values
 acc_list = []
@@ -32,10 +32,7 @@ if __name__ == '__main__':
                         nmi_list.append(float(match.group(2)))
                         kappa_list.append(float(match.group(3)))
                         ca_values = [float(x) for x in match.group(4).split() if x.strip()]
-                        if len(ca_epoch_list) == 0:
-                            ca_epoch_list = np.array(ca_values)
-                        else:
-                            ca_epoch_list += np.array(ca_values)
+                        ca_epoch_list.append(np.array(ca_values, dtype=float))
                         elapsed_time_list.append(float(match.group(5)))
                     except ValueError:
                         print(f"Error parsing values in file: {file_name}")
@@ -43,20 +40,36 @@ if __name__ == '__main__':
                     print(f"No match found in file: {file_name}")
 
     # compute averages while guarding against empty lists
-    num_epochs = len(acc_list)
     average_acc = np.mean(acc_list) if acc_list else 'N/A'
     average_nmi = np.mean(nmi_list) if nmi_list else 'N/A'
     average_kappa = np.mean(kappa_list) if kappa_list else 'N/A'
-    average_ca = (ca_epoch_list / num_epochs) if num_epochs > 0 else 'N/A'
     average_elapsed_time = np.mean(elapsed_time_list) if elapsed_time_list else 'N/A'
+
+    std_acc = np.std(acc_list) if acc_list else 'N/A'
+    std_nmi = np.std(nmi_list) if nmi_list else 'N/A'
+    std_kappa = np.std(kappa_list) if kappa_list else 'N/A'
+    std_elapsed_time = np.std(elapsed_time_list) if elapsed_time_list else 'N/A'
+
+    if ca_epoch_list:
+        ca_matrix = np.vstack(ca_epoch_list)
+        average_ca = np.mean(ca_matrix, axis=0)
+        std_ca = np.std(ca_matrix, axis=0)
+    else:
+        average_ca = 'N/A'
+        std_ca = 'N/A'
 
     # write aggregated results to final.txt
     final_file = os.path.join(output_dir, 'final.txt')
     with open(final_file, 'w') as f:
         f.write(f"Average acc: {average_acc}\n")
+        f.write(f"Std acc: {std_acc}\n")
         f.write(f"Average nmi: {average_nmi}\n")
+        f.write(f"Std nmi: {std_nmi}\n")
         f.write(f"Average kappa: {average_kappa}\n")
+        f.write(f"Std kappa: {std_kappa}\n")
         f.write(f"Average ca: {average_ca}\n")
+        f.write(f"Std ca: {std_ca}\n")
         f.write(f"Average elapsed time: {average_elapsed_time}\n")
+        f.write(f"Std elapsed time: {std_elapsed_time}\n")
 
     print(f"Final results written to {final_file}")
